@@ -1,0 +1,1198 @@
+{
+  "query": "How does changing K affect the context supplied to an LLM?",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "dimensions": 384,
+  "experiments": [
+    {
+      "metric": "Cosine similarity",
+      "k": 1,
+      "actual_chunks": 1,
+      "context_words": 62,
+      "context_characters": 379,
+      "results": [
+        {
+          "rank": 1,
+          "id": "DOC-08:chunk-1",
+          "text": "K equal to ten provides up to ten chunks to the language model. Compared with K equal to one, more context typically uses more input tokens and can increase cost and latency. Extra chunks may add irrelevant material. If there are fewer than ten chunks, retrieve all available chunks. Choose K by evaluating answer quality, relevance, and the model context limit.",
+          "metadata": {
+            "title": "K equals 10",
+            "topic": "context",
+            "source": "Course demo notes",
+            "document_id": "DOC-08",
+            "chunk_number": 1,
+            "word_count": 61
+          },
+          "score": 0.503172106847389,
+          "scores": {
+            "Cosine similarity": 0.503172106847389,
+            "Dot product": 0.5031721205517639,
+            "Euclidean distance": 0.9968228595735505
+          }
+        }
+      ]
+    },
+    {
+      "metric": "Cosine similarity",
+      "k": 3,
+      "actual_chunks": 3,
+      "context_words": 177,
+      "context_characters": 1133,
+      "results": [
+        {
+          "rank": 1,
+          "id": "DOC-08:chunk-1",
+          "text": "K equal to ten provides up to ten chunks to the language model. Compared with K equal to one, more context typically uses more input tokens and can increase cost and latency. Extra chunks may add irrelevant material. If there are fewer than ten chunks, retrieve all available chunks. Choose K by evaluating answer quality, relevance, and the model context limit.",
+          "metadata": {
+            "title": "K equals 10",
+            "topic": "context",
+            "source": "Course demo notes",
+            "document_id": "DOC-08",
+            "chunk_number": 1,
+            "word_count": 61
+          },
+          "score": 0.503172106847389,
+          "scores": {
+            "Cosine similarity": 0.503172106847389,
+            "Dot product": 0.5031721205517639,
+            "Euclidean distance": 0.9968228595735505
+          }
+        },
+        {
+          "rank": 2,
+          "id": "DOC-07:chunk-1",
+          "text": "K equal to three gives the language model three retrieved chunks. K equal to five provides five chunks and may cover a wider range of supporting concepts. Raising K preserves the earlier results for a fixed query and metric while adding lower ranked evidence. Useful context can improve completeness, but redundant or irrelevant chunks can distract the model.",
+          "metadata": {
+            "title": "K equals 3 and 5",
+            "topic": "context",
+            "source": "Course demo notes",
+            "document_id": "DOC-07",
+            "chunk_number": 1,
+            "word_count": 58
+          },
+          "score": 0.42128302541755075,
+          "scores": {
+            "Cosine similarity": 0.42128302541755075,
+            "Dot product": 0.4212830447180984,
+            "Euclidean distance": 1.0758410673474346
+          }
+        },
+        {
+          "rank": 3,
+          "id": "DOC-06:chunk-1",
+          "text": "With K equal to one, the language model receives only the single best matching chunk. This keeps the evidence compact and often reduces input token usage, but can omit supporting details or alternative explanations. A question combining several concepts may require more than one chunk. The best retrieval score alone does not guarantee sufficient evidence.",
+          "metadata": {
+            "title": "K equals 1",
+            "topic": "context",
+            "source": "Course demo notes",
+            "document_id": "DOC-06",
+            "chunk_number": 1,
+            "word_count": 55
+          },
+          "score": 0.3012592689935651,
+          "scores": {
+            "Cosine similarity": 0.3012592689935651,
+            "Dot product": 0.30125927773034955,
+            "Euclidean distance": 1.182151218136269
+          }
+        }
+      ]
+    },
+    {
+      "metric": "Cosine similarity",
+      "k": 5,
+      "actual_chunks": 5,
+      "context_words": 284,
+      "context_characters": 1858,
+      "results": [
+        {
+          "rank": 1,
+          "id": "DOC-08:chunk-1",
+          "text": "K equal to ten provides up to ten chunks to the language model. Compared with K equal to one, more context typically uses more input tokens and can increase cost and latency. Extra chunks may add irrelevant material. If there are fewer than ten chunks, retrieve all available chunks. Choose K by evaluating answer quality, relevance, and the model context limit.",
+          "metadata": {
+            "title": "K equals 10",
+            "topic": "context",
+            "source": "Course demo notes",
+            "document_id": "DOC-08",
+            "chunk_number": 1,
+            "word_count": 61
+          },
+          "score": 0.503172106847389,
+          "scores": {
+            "Cosine similarity": 0.503172106847389,
+            "Dot product": 0.5031721205517639,
+            "Euclidean distance": 0.9968228595735505
+          }
+        },
+        {
+          "rank": 2,
+          "id": "DOC-07:chunk-1",
+          "text": "K equal to three gives the language model three retrieved chunks. K equal to five provides five chunks and may cover a wider range of supporting concepts. Raising K preserves the earlier results for a fixed query and metric while adding lower ranked evidence. Useful context can improve completeness, but redundant or irrelevant chunks can distract the model.",
+          "metadata": {
+            "title": "K equals 3 and 5",
+            "topic": "context",
+            "source": "Course demo notes",
+            "document_id": "DOC-07",
+            "chunk_number": 1,
+            "word_count": 58
+          },
+          "score": 0.42128302541755075,
+          "scores": {
+            "Cosine similarity": 0.42128302541755075,
+            "Dot product": 0.4212830447180984,
+            "Euclidean distance": 1.0758410673474346
+          }
+        },
+        {
+          "rank": 3,
+          "id": "DOC-06:chunk-1",
+          "text": "With K equal to one, the language model receives only the single best matching chunk. This keeps the evidence compact and often reduces input token usage, but can omit supporting details or alternative explanations. A question combining several concepts may require more than one chunk. The best retrieval score alone does not guarantee sufficient evidence.",
+          "metadata": {
+            "title": "K equals 1",
+            "topic": "context",
+            "source": "Course demo notes",
+            "document_id": "DOC-06",
+            "chunk_number": 1,
+            "word_count": 55
+          },
+          "score": 0.3012592689935651,
+          "scores": {
+            "Cosine similarity": 0.3012592689935651,
+            "Dot product": 0.30125927773034955,
+            "Euclidean distance": 1.182151218136269
+          }
+        },
+        {
+          "rank": 4,
+          "id": "DOC-05:chunk-1",
+          "text": "Top-K retrieval scores a query against document embeddings and selects the K highest similarities or K lowest distances. K is the number of retrieved chunks, not a similarity threshold. Exact search evaluates every stored vector and is convenient for small datasets. Approximate nearest neighbor indexes trade some recall for speed at much larger scale.",
+          "metadata": {
+            "title": "Top-K search",
+            "topic": "retrieval",
+            "source": "Course demo notes",
+            "document_id": "DOC-05",
+            "chunk_number": 1,
+            "word_count": 54
+          },
+          "score": 0.2530462792355502,
+          "scores": {
+            "Cosine similarity": 0.2530462792355502,
+            "Dot product": 0.2530462842964622,
+            "Euclidean distance": 1.2222550762451219
+          }
+        },
+        {
+          "rank": 5,
+          "id": "DOC-13:chunk-1",
+          "text": "To evaluate retrieval, use test questions with known relevant chunks. Precision at K measures how many retrieved chunks are relevant divided by K. Recall at K measures retrieved relevant chunks divided by all known relevant chunks. Increasing K may improve recall but reduce precision; neither behavior is guaranteed on every dataset.",
+          "metadata": {
+            "title": "Retrieval evaluation",
+            "topic": "evaluation",
+            "source": "Course demo notes",
+            "document_id": "DOC-13",
+            "chunk_number": 1,
+            "word_count": 51
+          },
+          "score": 0.16836264193059663,
+          "scores": {
+            "Cosine similarity": 0.16836264193059663,
+            "Dot product": 0.16836264390433764,
+            "Euclidean distance": 1.2896800904246104
+          }
+        }
+      ]
+    },
+    {
+      "metric": "Cosine similarity",
+      "k": 10,
+      "actual_chunks": 10,
+      "context_words": 543,
+      "context_characters": 3654,
+      "results": [
+        {
+          "rank": 1,
+          "id": "DOC-08:chunk-1",
+          "text": "K equal to ten provides up to ten chunks to the language model. Compared with K equal to one, more context typically uses more input tokens and can increase cost and latency. Extra chunks may add irrelevant material. If there are fewer than ten chunks, retrieve all available chunks. Choose K by evaluating answer quality, relevance, and the model context limit.",
+          "metadata": {
+            "title": "K equals 10",
+            "topic": "context",
+            "source": "Course demo notes",
+            "document_id": "DOC-08",
+            "chunk_number": 1,
+            "word_count": 61
+          },
+          "score": 0.503172106847389,
+          "scores": {
+            "Cosine similarity": 0.503172106847389,
+            "Dot product": 0.5031721205517639,
+            "Euclidean distance": 0.9968228595735505
+          }
+        },
+        {
+          "rank": 2,
+          "id": "DOC-07:chunk-1",
+          "text": "K equal to three gives the language model three retrieved chunks. K equal to five provides five chunks and may cover a wider range of supporting concepts. Raising K preserves the earlier results for a fixed query and metric while adding lower ranked evidence. Useful context can improve completeness, but redundant or irrelevant chunks can distract the model.",
+          "metadata": {
+            "title": "K equals 3 and 5",
+            "topic": "context",
+            "source": "Course demo notes",
+            "document_id": "DOC-07",
+            "chunk_number": 1,
+            "word_count": 58
+          },
+          "score": 0.42128302541755075,
+          "scores": {
+            "Cosine similarity": 0.42128302541755075,
+            "Dot product": 0.4212830447180984,
+            "Euclidean distance": 1.0758410673474346
+          }
+        },
+        {
+          "rank": 3,
+          "id": "DOC-06:chunk-1",
+          "text": "With K equal to one, the language model receives only the single best matching chunk. This keeps the evidence compact and often reduces input token usage, but can omit supporting details or alternative explanations. A question combining several concepts may require more than one chunk. The best retrieval score alone does not guarantee sufficient evidence.",
+          "metadata": {
+            "title": "K equals 1",
+            "topic": "context",
+            "source": "Course demo notes",
+            "document_id": "DOC-06",
+            "chunk_number": 1,
+            "word_count": 55
+          },
+          "score": 0.3012592689935651,
+          "scores": {
+            "Cosine similarity": 0.3012592689935651,
+            "Dot product": 0.30125927773034955,
+            "Euclidean distance": 1.182151218136269
+          }
+        },
+        {
+          "rank": 4,
+          "id": "DOC-05:chunk-1",
+          "text": "Top-K retrieval scores a query against document embeddings and selects the K highest similarities or K lowest distances. K is the number of retrieved chunks, not a similarity threshold. Exact search evaluates every stored vector and is convenient for small datasets. Approximate nearest neighbor indexes trade some recall for speed at much larger scale.",
+          "metadata": {
+            "title": "Top-K search",
+            "topic": "retrieval",
+            "source": "Course demo notes",
+            "document_id": "DOC-05",
+            "chunk_number": 1,
+            "word_count": 54
+          },
+          "score": 0.2530462792355502,
+          "scores": {
+            "Cosine similarity": 0.2530462792355502,
+            "Dot product": 0.2530462842964622,
+            "Euclidean distance": 1.2222550762451219
+          }
+        },
+        {
+          "rank": 5,
+          "id": "DOC-13:chunk-1",
+          "text": "To evaluate retrieval, use test questions with known relevant chunks. Precision at K measures how many retrieved chunks are relevant divided by K. Recall at K measures retrieved relevant chunks divided by all known relevant chunks. Increasing K may improve recall but reduce precision; neither behavior is guaranteed on every dataset.",
+          "metadata": {
+            "title": "Retrieval evaluation",
+            "topic": "evaluation",
+            "source": "Course demo notes",
+            "document_id": "DOC-13",
+            "chunk_number": 1,
+            "word_count": 51
+          },
+          "score": 0.16836264193059663,
+          "scores": {
+            "Cosine similarity": 0.16836264193059663,
+            "Dot product": 0.16836264390433764,
+            "Euclidean distance": 1.2896800904246104
+          }
+        },
+        {
+          "rank": 6,
+          "id": "DOC-12:chunk-1",
+          "text": "Vector normalization divides a vector by its Euclidean length to create a unit vector. Normalizing removes magnitude differences. Cosine similarity is invariant to positive rescaling, while raw dot product and raw Euclidean distance can change. Compare metrics carefully and explicitly state whether your embeddings have been normalized.",
+          "metadata": {
+            "title": "Normalization",
+            "topic": "similarity",
+            "source": "Course demo notes",
+            "document_id": "DOC-12",
+            "chunk_number": 1,
+            "word_count": 47
+          },
+          "score": 0.13117886937926324,
+          "scores": {
+            "Cosine similarity": 0.13117886937926324,
+            "Dot product": 0.13117887404842296,
+            "Euclidean distance": 1.3181966177664222
+          }
+        },
+        {
+          "rank": 7,
+          "id": "DOC-01:chunk-1",
+          "text": "An embedding represents text as a dense vector of numbers. An embedding model learns patterns so texts with related meanings tend to occupy nearby positions in vector space. A query and the searchable documents must use the same embedding model and dimension. Embeddings support semantic matching even when a question and its answer use different words.",
+          "metadata": {
+            "title": "Text embeddings",
+            "topic": "embeddings",
+            "source": "Course demo notes",
+            "document_id": "DOC-01",
+            "chunk_number": 1,
+            "word_count": 56
+          },
+          "score": 0.11805325912665854,
+          "scores": {
+            "Cosine similarity": 0.11805325912665854,
+            "Dot product": 0.11805326415679107,
+            "Euclidean distance": 1.3281165449253458
+          }
+        },
+        {
+          "rank": 8,
+          "id": "DOC-10:chunk-1",
+          "text": "Chunking splits long documents into smaller searchable passages. Overlap keeps some surrounding words across boundaries and can preserve continuity. Very small chunks lose context while very large chunks may mix topics. Each chunk should have a stable identifier and metadata connecting it back to its source document.",
+          "metadata": {
+            "title": "Chunking documents",
+            "topic": "chunking",
+            "source": "Course demo notes",
+            "document_id": "DOC-10",
+            "chunk_number": 1,
+            "word_count": 47
+          },
+          "score": 0.11065721558711705,
+          "scores": {
+            "Cosine similarity": 0.11065721558711705,
+            "Dot product": 0.11065721378763206,
+            "Euclidean distance": 1.3336737006858717
+          }
+        },
+        {
+          "rank": 9,
+          "id": "DOC-09:chunk-1",
+          "text": "Retrieval augmented generation first embeds a question, retrieves relevant chunks, and places their text in the prompt of a language model. The model then generates an answer grounded in that context. Retrieval scores describe vector relationships, not factual reliability. Cite source chunks and acknowledge when the evidence cannot answer the question.",
+          "metadata": {
+            "title": "Retrieval augmented generation",
+            "topic": "RAG",
+            "source": "Course demo notes",
+            "document_id": "DOC-09",
+            "chunk_number": 1,
+            "word_count": 51
+          },
+          "score": 0.09814885394138274,
+          "scores": {
+            "Cosine similarity": 0.09814885394138274,
+            "Dot product": 0.09814885287862796,
+            "Euclidean distance": 1.3430198332812389
+          }
+        },
+        {
+          "rank": 10,
+          "id": "DOC-11:chunk-1",
+          "text": "Metadata stores attributes such as source, title, topic, document ID, and chunk number. It helps users interpret retrieved evidence and trace an answer to its origin. Metadata can also support filters when implemented. The rank is a result's position after sorting by the chosen scoring function, with rank one representing the best match.",
+          "metadata": {
+            "title": "Metadata and ranks",
+            "topic": "metadata",
+            "source": "Course demo notes",
+            "document_id": "DOC-11",
+            "chunk_number": 1,
+            "word_count": 53
+          },
+          "score": 0.07961072225790905,
+          "scores": {
+            "Cosine similarity": 0.07961072225790905,
+            "Dot product": 0.07961072373438774,
+            "Euclidean distance": 1.356752958214458
+          }
+        }
+      ]
+    },
+    {
+      "metric": "Dot product",
+      "k": 1,
+      "actual_chunks": 1,
+      "context_words": 62,
+      "context_characters": 379,
+      "results": [
+        {
+          "rank": 1,
+          "id": "DOC-08:chunk-1",
+          "text": "K equal to ten provides up to ten chunks to the language model. Compared with K equal to one, more context typically uses more input tokens and can increase cost and latency. Extra chunks may add irrelevant material. If there are fewer than ten chunks, retrieve all available chunks. Choose K by evaluating answer quality, relevance, and the model context limit.",
+          "metadata": {
+            "title": "K equals 10",
+            "topic": "context",
+            "source": "Course demo notes",
+            "document_id": "DOC-08",
+            "chunk_number": 1,
+            "word_count": 61
+          },
+          "score": 0.5031721205517639,
+          "scores": {
+            "Cosine similarity": 0.503172106847389,
+            "Dot product": 0.5031721205517639,
+            "Euclidean distance": 0.9968228595735505
+          }
+        }
+      ]
+    },
+    {
+      "metric": "Dot product",
+      "k": 3,
+      "actual_chunks": 3,
+      "context_words": 177,
+      "context_characters": 1133,
+      "results": [
+        {
+          "rank": 1,
+          "id": "DOC-08:chunk-1",
+          "text": "K equal to ten provides up to ten chunks to the language model. Compared with K equal to one, more context typically uses more input tokens and can increase cost and latency. Extra chunks may add irrelevant material. If there are fewer than ten chunks, retrieve all available chunks. Choose K by evaluating answer quality, relevance, and the model context limit.",
+          "metadata": {
+            "title": "K equals 10",
+            "topic": "context",
+            "source": "Course demo notes",
+            "document_id": "DOC-08",
+            "chunk_number": 1,
+            "word_count": 61
+          },
+          "score": 0.5031721205517639,
+          "scores": {
+            "Cosine similarity": 0.503172106847389,
+            "Dot product": 0.5031721205517639,
+            "Euclidean distance": 0.9968228595735505
+          }
+        },
+        {
+          "rank": 2,
+          "id": "DOC-07:chunk-1",
+          "text": "K equal to three gives the language model three retrieved chunks. K equal to five provides five chunks and may cover a wider range of supporting concepts. Raising K preserves the earlier results for a fixed query and metric while adding lower ranked evidence. Useful context can improve completeness, but redundant or irrelevant chunks can distract the model.",
+          "metadata": {
+            "title": "K equals 3 and 5",
+            "topic": "context",
+            "source": "Course demo notes",
+            "document_id": "DOC-07",
+            "chunk_number": 1,
+            "word_count": 58
+          },
+          "score": 0.4212830447180984,
+          "scores": {
+            "Cosine similarity": 0.42128302541755075,
+            "Dot product": 0.4212830447180984,
+            "Euclidean distance": 1.0758410673474346
+          }
+        },
+        {
+          "rank": 3,
+          "id": "DOC-06:chunk-1",
+          "text": "With K equal to one, the language model receives only the single best matching chunk. This keeps the evidence compact and often reduces input token usage, but can omit supporting details or alternative explanations. A question combining several concepts may require more than one chunk. The best retrieval score alone does not guarantee sufficient evidence.",
+          "metadata": {
+            "title": "K equals 1",
+            "topic": "context",
+            "source": "Course demo notes",
+            "document_id": "DOC-06",
+            "chunk_number": 1,
+            "word_count": 55
+          },
+          "score": 0.30125927773034955,
+          "scores": {
+            "Cosine similarity": 0.3012592689935651,
+            "Dot product": 0.30125927773034955,
+            "Euclidean distance": 1.182151218136269
+          }
+        }
+      ]
+    },
+    {
+      "metric": "Dot product",
+      "k": 5,
+      "actual_chunks": 5,
+      "context_words": 284,
+      "context_characters": 1858,
+      "results": [
+        {
+          "rank": 1,
+          "id": "DOC-08:chunk-1",
+          "text": "K equal to ten provides up to ten chunks to the language model. Compared with K equal to one, more context typically uses more input tokens and can increase cost and latency. Extra chunks may add irrelevant material. If there are fewer than ten chunks, retrieve all available chunks. Choose K by evaluating answer quality, relevance, and the model context limit.",
+          "metadata": {
+            "title": "K equals 10",
+            "topic": "context",
+            "source": "Course demo notes",
+            "document_id": "DOC-08",
+            "chunk_number": 1,
+            "word_count": 61
+          },
+          "score": 0.5031721205517639,
+          "scores": {
+            "Cosine similarity": 0.503172106847389,
+            "Dot product": 0.5031721205517639,
+            "Euclidean distance": 0.9968228595735505
+          }
+        },
+        {
+          "rank": 2,
+          "id": "DOC-07:chunk-1",
+          "text": "K equal to three gives the language model three retrieved chunks. K equal to five provides five chunks and may cover a wider range of supporting concepts. Raising K preserves the earlier results for a fixed query and metric while adding lower ranked evidence. Useful context can improve completeness, but redundant or irrelevant chunks can distract the model.",
+          "metadata": {
+            "title": "K equals 3 and 5",
+            "topic": "context",
+            "source": "Course demo notes",
+            "document_id": "DOC-07",
+            "chunk_number": 1,
+            "word_count": 58
+          },
+          "score": 0.4212830447180984,
+          "scores": {
+            "Cosine similarity": 0.42128302541755075,
+            "Dot product": 0.4212830447180984,
+            "Euclidean distance": 1.0758410673474346
+          }
+        },
+        {
+          "rank": 3,
+          "id": "DOC-06:chunk-1",
+          "text": "With K equal to one, the language model receives only the single best matching chunk. This keeps the evidence compact and often reduces input token usage, but can omit supporting details or alternative explanations. A question combining several concepts may require more than one chunk. The best retrieval score alone does not guarantee sufficient evidence.",
+          "metadata": {
+            "title": "K equals 1",
+            "topic": "context",
+            "source": "Course demo notes",
+            "document_id": "DOC-06",
+            "chunk_number": 1,
+            "word_count": 55
+          },
+          "score": 0.30125927773034955,
+          "scores": {
+            "Cosine similarity": 0.3012592689935651,
+            "Dot product": 0.30125927773034955,
+            "Euclidean distance": 1.182151218136269
+          }
+        },
+        {
+          "rank": 4,
+          "id": "DOC-05:chunk-1",
+          "text": "Top-K retrieval scores a query against document embeddings and selects the K highest similarities or K lowest distances. K is the number of retrieved chunks, not a similarity threshold. Exact search evaluates every stored vector and is convenient for small datasets. Approximate nearest neighbor indexes trade some recall for speed at much larger scale.",
+          "metadata": {
+            "title": "Top-K search",
+            "topic": "retrieval",
+            "source": "Course demo notes",
+            "document_id": "DOC-05",
+            "chunk_number": 1,
+            "word_count": 54
+          },
+          "score": 0.2530462842964622,
+          "scores": {
+            "Cosine similarity": 0.2530462792355502,
+            "Dot product": 0.2530462842964622,
+            "Euclidean distance": 1.2222550762451219
+          }
+        },
+        {
+          "rank": 5,
+          "id": "DOC-13:chunk-1",
+          "text": "To evaluate retrieval, use test questions with known relevant chunks. Precision at K measures how many retrieved chunks are relevant divided by K. Recall at K measures retrieved relevant chunks divided by all known relevant chunks. Increasing K may improve recall but reduce precision; neither behavior is guaranteed on every dataset.",
+          "metadata": {
+            "title": "Retrieval evaluation",
+            "topic": "evaluation",
+            "source": "Course demo notes",
+            "document_id": "DOC-13",
+            "chunk_number": 1,
+            "word_count": 51
+          },
+          "score": 0.16836264390433764,
+          "scores": {
+            "Cosine similarity": 0.16836264193059663,
+            "Dot product": 0.16836264390433764,
+            "Euclidean distance": 1.2896800904246104
+          }
+        }
+      ]
+    },
+    {
+      "metric": "Dot product",
+      "k": 10,
+      "actual_chunks": 10,
+      "context_words": 543,
+      "context_characters": 3654,
+      "results": [
+        {
+          "rank": 1,
+          "id": "DOC-08:chunk-1",
+          "text": "K equal to ten provides up to ten chunks to the language model. Compared with K equal to one, more context typically uses more input tokens and can increase cost and latency. Extra chunks may add irrelevant material. If there are fewer than ten chunks, retrieve all available chunks. Choose K by evaluating answer quality, relevance, and the model context limit.",
+          "metadata": {
+            "title": "K equals 10",
+            "topic": "context",
+            "source": "Course demo notes",
+            "document_id": "DOC-08",
+            "chunk_number": 1,
+            "word_count": 61
+          },
+          "score": 0.5031721205517639,
+          "scores": {
+            "Cosine similarity": 0.503172106847389,
+            "Dot product": 0.5031721205517639,
+            "Euclidean distance": 0.9968228595735505
+          }
+        },
+        {
+          "rank": 2,
+          "id": "DOC-07:chunk-1",
+          "text": "K equal to three gives the language model three retrieved chunks. K equal to five provides five chunks and may cover a wider range of supporting concepts. Raising K preserves the earlier results for a fixed query and metric while adding lower ranked evidence. Useful context can improve completeness, but redundant or irrelevant chunks can distract the model.",
+          "metadata": {
+            "title": "K equals 3 and 5",
+            "topic": "context",
+            "source": "Course demo notes",
+            "document_id": "DOC-07",
+            "chunk_number": 1,
+            "word_count": 58
+          },
+          "score": 0.4212830447180984,
+          "scores": {
+            "Cosine similarity": 0.42128302541755075,
+            "Dot product": 0.4212830447180984,
+            "Euclidean distance": 1.0758410673474346
+          }
+        },
+        {
+          "rank": 3,
+          "id": "DOC-06:chunk-1",
+          "text": "With K equal to one, the language model receives only the single best matching chunk. This keeps the evidence compact and often reduces input token usage, but can omit supporting details or alternative explanations. A question combining several concepts may require more than one chunk. The best retrieval score alone does not guarantee sufficient evidence.",
+          "metadata": {
+            "title": "K equals 1",
+            "topic": "context",
+            "source": "Course demo notes",
+            "document_id": "DOC-06",
+            "chunk_number": 1,
+            "word_count": 55
+          },
+          "score": 0.30125927773034955,
+          "scores": {
+            "Cosine similarity": 0.3012592689935651,
+            "Dot product": 0.30125927773034955,
+            "Euclidean distance": 1.182151218136269
+          }
+        },
+        {
+          "rank": 4,
+          "id": "DOC-05:chunk-1",
+          "text": "Top-K retrieval scores a query against document embeddings and selects the K highest similarities or K lowest distances. K is the number of retrieved chunks, not a similarity threshold. Exact search evaluates every stored vector and is convenient for small datasets. Approximate nearest neighbor indexes trade some recall for speed at much larger scale.",
+          "metadata": {
+            "title": "Top-K search",
+            "topic": "retrieval",
+            "source": "Course demo notes",
+            "document_id": "DOC-05",
+            "chunk_number": 1,
+            "word_count": 54
+          },
+          "score": 0.2530462842964622,
+          "scores": {
+            "Cosine similarity": 0.2530462792355502,
+            "Dot product": 0.2530462842964622,
+            "Euclidean distance": 1.2222550762451219
+          }
+        },
+        {
+          "rank": 5,
+          "id": "DOC-13:chunk-1",
+          "text": "To evaluate retrieval, use test questions with known relevant chunks. Precision at K measures how many retrieved chunks are relevant divided by K. Recall at K measures retrieved relevant chunks divided by all known relevant chunks. Increasing K may improve recall but reduce precision; neither behavior is guaranteed on every dataset.",
+          "metadata": {
+            "title": "Retrieval evaluation",
+            "topic": "evaluation",
+            "source": "Course demo notes",
+            "document_id": "DOC-13",
+            "chunk_number": 1,
+            "word_count": 51
+          },
+          "score": 0.16836264390433764,
+          "scores": {
+            "Cosine similarity": 0.16836264193059663,
+            "Dot product": 0.16836264390433764,
+            "Euclidean distance": 1.2896800904246104
+          }
+        },
+        {
+          "rank": 6,
+          "id": "DOC-12:chunk-1",
+          "text": "Vector normalization divides a vector by its Euclidean length to create a unit vector. Normalizing removes magnitude differences. Cosine similarity is invariant to positive rescaling, while raw dot product and raw Euclidean distance can change. Compare metrics carefully and explicitly state whether your embeddings have been normalized.",
+          "metadata": {
+            "title": "Normalization",
+            "topic": "similarity",
+            "source": "Course demo notes",
+            "document_id": "DOC-12",
+            "chunk_number": 1,
+            "word_count": 47
+          },
+          "score": 0.13117887404842296,
+          "scores": {
+            "Cosine similarity": 0.13117886937926324,
+            "Dot product": 0.13117887404842296,
+            "Euclidean distance": 1.3181966177664222
+          }
+        },
+        {
+          "rank": 7,
+          "id": "DOC-01:chunk-1",
+          "text": "An embedding represents text as a dense vector of numbers. An embedding model learns patterns so texts with related meanings tend to occupy nearby positions in vector space. A query and the searchable documents must use the same embedding model and dimension. Embeddings support semantic matching even when a question and its answer use different words.",
+          "metadata": {
+            "title": "Text embeddings",
+            "topic": "embeddings",
+            "source": "Course demo notes",
+            "document_id": "DOC-01",
+            "chunk_number": 1,
+            "word_count": 56
+          },
+          "score": 0.11805326415679107,
+          "scores": {
+            "Cosine similarity": 0.11805325912665854,
+            "Dot product": 0.11805326415679107,
+            "Euclidean distance": 1.3281165449253458
+          }
+        },
+        {
+          "rank": 8,
+          "id": "DOC-10:chunk-1",
+          "text": "Chunking splits long documents into smaller searchable passages. Overlap keeps some surrounding words across boundaries and can preserve continuity. Very small chunks lose context while very large chunks may mix topics. Each chunk should have a stable identifier and metadata connecting it back to its source document.",
+          "metadata": {
+            "title": "Chunking documents",
+            "topic": "chunking",
+            "source": "Course demo notes",
+            "document_id": "DOC-10",
+            "chunk_number": 1,
+            "word_count": 47
+          },
+          "score": 0.11065721378763206,
+          "scores": {
+            "Cosine similarity": 0.11065721558711705,
+            "Dot product": 0.11065721378763206,
+            "Euclidean distance": 1.3336737006858717
+          }
+        },
+        {
+          "rank": 9,
+          "id": "DOC-09:chunk-1",
+          "text": "Retrieval augmented generation first embeds a question, retrieves relevant chunks, and places their text in the prompt of a language model. The model then generates an answer grounded in that context. Retrieval scores describe vector relationships, not factual reliability. Cite source chunks and acknowledge when the evidence cannot answer the question.",
+          "metadata": {
+            "title": "Retrieval augmented generation",
+            "topic": "RAG",
+            "source": "Course demo notes",
+            "document_id": "DOC-09",
+            "chunk_number": 1,
+            "word_count": 51
+          },
+          "score": 0.09814885287862796,
+          "scores": {
+            "Cosine similarity": 0.09814885394138274,
+            "Dot product": 0.09814885287862796,
+            "Euclidean distance": 1.3430198332812389
+          }
+        },
+        {
+          "rank": 10,
+          "id": "DOC-11:chunk-1",
+          "text": "Metadata stores attributes such as source, title, topic, document ID, and chunk number. It helps users interpret retrieved evidence and trace an answer to its origin. Metadata can also support filters when implemented. The rank is a result's position after sorting by the chosen scoring function, with rank one representing the best match.",
+          "metadata": {
+            "title": "Metadata and ranks",
+            "topic": "metadata",
+            "source": "Course demo notes",
+            "document_id": "DOC-11",
+            "chunk_number": 1,
+            "word_count": 53
+          },
+          "score": 0.07961072373438774,
+          "scores": {
+            "Cosine similarity": 0.07961072225790905,
+            "Dot product": 0.07961072373438774,
+            "Euclidean distance": 1.356752958214458
+          }
+        }
+      ]
+    },
+    {
+      "metric": "Euclidean distance",
+      "k": 1,
+      "actual_chunks": 1,
+      "context_words": 62,
+      "context_characters": 379,
+      "results": [
+        {
+          "rank": 1,
+          "id": "DOC-08:chunk-1",
+          "text": "K equal to ten provides up to ten chunks to the language model. Compared with K equal to one, more context typically uses more input tokens and can increase cost and latency. Extra chunks may add irrelevant material. If there are fewer than ten chunks, retrieve all available chunks. Choose K by evaluating answer quality, relevance, and the model context limit.",
+          "metadata": {
+            "title": "K equals 10",
+            "topic": "context",
+            "source": "Course demo notes",
+            "document_id": "DOC-08",
+            "chunk_number": 1,
+            "word_count": 61
+          },
+          "score": 0.9968228595735505,
+          "scores": {
+            "Cosine similarity": 0.503172106847389,
+            "Dot product": 0.5031721205517639,
+            "Euclidean distance": 0.9968228595735505
+          }
+        }
+      ]
+    },
+    {
+      "metric": "Euclidean distance",
+      "k": 3,
+      "actual_chunks": 3,
+      "context_words": 177,
+      "context_characters": 1133,
+      "results": [
+        {
+          "rank": 1,
+          "id": "DOC-08:chunk-1",
+          "text": "K equal to ten provides up to ten chunks to the language model. Compared with K equal to one, more context typically uses more input tokens and can increase cost and latency. Extra chunks may add irrelevant material. If there are fewer than ten chunks, retrieve all available chunks. Choose K by evaluating answer quality, relevance, and the model context limit.",
+          "metadata": {
+            "title": "K equals 10",
+            "topic": "context",
+            "source": "Course demo notes",
+            "document_id": "DOC-08",
+            "chunk_number": 1,
+            "word_count": 61
+          },
+          "score": 0.9968228595735505,
+          "scores": {
+            "Cosine similarity": 0.503172106847389,
+            "Dot product": 0.5031721205517639,
+            "Euclidean distance": 0.9968228595735505
+          }
+        },
+        {
+          "rank": 2,
+          "id": "DOC-07:chunk-1",
+          "text": "K equal to three gives the language model three retrieved chunks. K equal to five provides five chunks and may cover a wider range of supporting concepts. Raising K preserves the earlier results for a fixed query and metric while adding lower ranked evidence. Useful context can improve completeness, but redundant or irrelevant chunks can distract the model.",
+          "metadata": {
+            "title": "K equals 3 and 5",
+            "topic": "context",
+            "source": "Course demo notes",
+            "document_id": "DOC-07",
+            "chunk_number": 1,
+            "word_count": 58
+          },
+          "score": 1.0758410673474346,
+          "scores": {
+            "Cosine similarity": 0.42128302541755075,
+            "Dot product": 0.4212830447180984,
+            "Euclidean distance": 1.0758410673474346
+          }
+        },
+        {
+          "rank": 3,
+          "id": "DOC-06:chunk-1",
+          "text": "With K equal to one, the language model receives only the single best matching chunk. This keeps the evidence compact and often reduces input token usage, but can omit supporting details or alternative explanations. A question combining several concepts may require more than one chunk. The best retrieval score alone does not guarantee sufficient evidence.",
+          "metadata": {
+            "title": "K equals 1",
+            "topic": "context",
+            "source": "Course demo notes",
+            "document_id": "DOC-06",
+            "chunk_number": 1,
+            "word_count": 55
+          },
+          "score": 1.182151218136269,
+          "scores": {
+            "Cosine similarity": 0.3012592689935651,
+            "Dot product": 0.30125927773034955,
+            "Euclidean distance": 1.182151218136269
+          }
+        }
+      ]
+    },
+    {
+      "metric": "Euclidean distance",
+      "k": 5,
+      "actual_chunks": 5,
+      "context_words": 284,
+      "context_characters": 1858,
+      "results": [
+        {
+          "rank": 1,
+          "id": "DOC-08:chunk-1",
+          "text": "K equal to ten provides up to ten chunks to the language model. Compared with K equal to one, more context typically uses more input tokens and can increase cost and latency. Extra chunks may add irrelevant material. If there are fewer than ten chunks, retrieve all available chunks. Choose K by evaluating answer quality, relevance, and the model context limit.",
+          "metadata": {
+            "title": "K equals 10",
+            "topic": "context",
+            "source": "Course demo notes",
+            "document_id": "DOC-08",
+            "chunk_number": 1,
+            "word_count": 61
+          },
+          "score": 0.9968228595735505,
+          "scores": {
+            "Cosine similarity": 0.503172106847389,
+            "Dot product": 0.5031721205517639,
+            "Euclidean distance": 0.9968228595735505
+          }
+        },
+        {
+          "rank": 2,
+          "id": "DOC-07:chunk-1",
+          "text": "K equal to three gives the language model three retrieved chunks. K equal to five provides five chunks and may cover a wider range of supporting concepts. Raising K preserves the earlier results for a fixed query and metric while adding lower ranked evidence. Useful context can improve completeness, but redundant or irrelevant chunks can distract the model.",
+          "metadata": {
+            "title": "K equals 3 and 5",
+            "topic": "context",
+            "source": "Course demo notes",
+            "document_id": "DOC-07",
+            "chunk_number": 1,
+            "word_count": 58
+          },
+          "score": 1.0758410673474346,
+          "scores": {
+            "Cosine similarity": 0.42128302541755075,
+            "Dot product": 0.4212830447180984,
+            "Euclidean distance": 1.0758410673474346
+          }
+        },
+        {
+          "rank": 3,
+          "id": "DOC-06:chunk-1",
+          "text": "With K equal to one, the language model receives only the single best matching chunk. This keeps the evidence compact and often reduces input token usage, but can omit supporting details or alternative explanations. A question combining several concepts may require more than one chunk. The best retrieval score alone does not guarantee sufficient evidence.",
+          "metadata": {
+            "title": "K equals 1",
+            "topic": "context",
+            "source": "Course demo notes",
+            "document_id": "DOC-06",
+            "chunk_number": 1,
+            "word_count": 55
+          },
+          "score": 1.182151218136269,
+          "scores": {
+            "Cosine similarity": 0.3012592689935651,
+            "Dot product": 0.30125927773034955,
+            "Euclidean distance": 1.182151218136269
+          }
+        },
+        {
+          "rank": 4,
+          "id": "DOC-05:chunk-1",
+          "text": "Top-K retrieval scores a query against document embeddings and selects the K highest similarities or K lowest distances. K is the number of retrieved chunks, not a similarity threshold. Exact search evaluates every stored vector and is convenient for small datasets. Approximate nearest neighbor indexes trade some recall for speed at much larger scale.",
+          "metadata": {
+            "title": "Top-K search",
+            "topic": "retrieval",
+            "source": "Course demo notes",
+            "document_id": "DOC-05",
+            "chunk_number": 1,
+            "word_count": 54
+          },
+          "score": 1.2222550762451219,
+          "scores": {
+            "Cosine similarity": 0.2530462792355502,
+            "Dot product": 0.2530462842964622,
+            "Euclidean distance": 1.2222550762451219
+          }
+        },
+        {
+          "rank": 5,
+          "id": "DOC-13:chunk-1",
+          "text": "To evaluate retrieval, use test questions with known relevant chunks. Precision at K measures how many retrieved chunks are relevant divided by K. Recall at K measures retrieved relevant chunks divided by all known relevant chunks. Increasing K may improve recall but reduce precision; neither behavior is guaranteed on every dataset.",
+          "metadata": {
+            "title": "Retrieval evaluation",
+            "topic": "evaluation",
+            "source": "Course demo notes",
+            "document_id": "DOC-13",
+            "chunk_number": 1,
+            "word_count": 51
+          },
+          "score": 1.2896800904246104,
+          "scores": {
+            "Cosine similarity": 0.16836264193059663,
+            "Dot product": 0.16836264390433764,
+            "Euclidean distance": 1.2896800904246104
+          }
+        }
+      ]
+    },
+    {
+      "metric": "Euclidean distance",
+      "k": 10,
+      "actual_chunks": 10,
+      "context_words": 543,
+      "context_characters": 3654,
+      "results": [
+        {
+          "rank": 1,
+          "id": "DOC-08:chunk-1",
+          "text": "K equal to ten provides up to ten chunks to the language model. Compared with K equal to one, more context typically uses more input tokens and can increase cost and latency. Extra chunks may add irrelevant material. If there are fewer than ten chunks, retrieve all available chunks. Choose K by evaluating answer quality, relevance, and the model context limit.",
+          "metadata": {
+            "title": "K equals 10",
+            "topic": "context",
+            "source": "Course demo notes",
+            "document_id": "DOC-08",
+            "chunk_number": 1,
+            "word_count": 61
+          },
+          "score": 0.9968228595735505,
+          "scores": {
+            "Cosine similarity": 0.503172106847389,
+            "Dot product": 0.5031721205517639,
+            "Euclidean distance": 0.9968228595735505
+          }
+        },
+        {
+          "rank": 2,
+          "id": "DOC-07:chunk-1",
+          "text": "K equal to three gives the language model three retrieved chunks. K equal to five provides five chunks and may cover a wider range of supporting concepts. Raising K preserves the earlier results for a fixed query and metric while adding lower ranked evidence. Useful context can improve completeness, but redundant or irrelevant chunks can distract the model.",
+          "metadata": {
+            "title": "K equals 3 and 5",
+            "topic": "context",
+            "source": "Course demo notes",
+            "document_id": "DOC-07",
+            "chunk_number": 1,
+            "word_count": 58
+          },
+          "score": 1.0758410673474346,
+          "scores": {
+            "Cosine similarity": 0.42128302541755075,
+            "Dot product": 0.4212830447180984,
+            "Euclidean distance": 1.0758410673474346
+          }
+        },
+        {
+          "rank": 3,
+          "id": "DOC-06:chunk-1",
+          "text": "With K equal to one, the language model receives only the single best matching chunk. This keeps the evidence compact and often reduces input token usage, but can omit supporting details or alternative explanations. A question combining several concepts may require more than one chunk. The best retrieval score alone does not guarantee sufficient evidence.",
+          "metadata": {
+            "title": "K equals 1",
+            "topic": "context",
+            "source": "Course demo notes",
+            "document_id": "DOC-06",
+            "chunk_number": 1,
+            "word_count": 55
+          },
+          "score": 1.182151218136269,
+          "scores": {
+            "Cosine similarity": 0.3012592689935651,
+            "Dot product": 0.30125927773034955,
+            "Euclidean distance": 1.182151218136269
+          }
+        },
+        {
+          "rank": 4,
+          "id": "DOC-05:chunk-1",
+          "text": "Top-K retrieval scores a query against document embeddings and selects the K highest similarities or K lowest distances. K is the number of retrieved chunks, not a similarity threshold. Exact search evaluates every stored vector and is convenient for small datasets. Approximate nearest neighbor indexes trade some recall for speed at much larger scale.",
+          "metadata": {
+            "title": "Top-K search",
+            "topic": "retrieval",
+            "source": "Course demo notes",
+            "document_id": "DOC-05",
+            "chunk_number": 1,
+            "word_count": 54
+          },
+          "score": 1.2222550762451219,
+          "scores": {
+            "Cosine similarity": 0.2530462792355502,
+            "Dot product": 0.2530462842964622,
+            "Euclidean distance": 1.2222550762451219
+          }
+        },
+        {
+          "rank": 5,
+          "id": "DOC-13:chunk-1",
+          "text": "To evaluate retrieval, use test questions with known relevant chunks. Precision at K measures how many retrieved chunks are relevant divided by K. Recall at K measures retrieved relevant chunks divided by all known relevant chunks. Increasing K may improve recall but reduce precision; neither behavior is guaranteed on every dataset.",
+          "metadata": {
+            "title": "Retrieval evaluation",
+            "topic": "evaluation",
+            "source": "Course demo notes",
+            "document_id": "DOC-13",
+            "chunk_number": 1,
+            "word_count": 51
+          },
+          "score": 1.2896800904246104,
+          "scores": {
+            "Cosine similarity": 0.16836264193059663,
+            "Dot product": 0.16836264390433764,
+            "Euclidean distance": 1.2896800904246104
+          }
+        },
+        {
+          "rank": 6,
+          "id": "DOC-12:chunk-1",
+          "text": "Vector normalization divides a vector by its Euclidean length to create a unit vector. Normalizing removes magnitude differences. Cosine similarity is invariant to positive rescaling, while raw dot product and raw Euclidean distance can change. Compare metrics carefully and explicitly state whether your embeddings have been normalized.",
+          "metadata": {
+            "title": "Normalization",
+            "topic": "similarity",
+            "source": "Course demo notes",
+            "document_id": "DOC-12",
+            "chunk_number": 1,
+            "word_count": 47
+          },
+          "score": 1.3181966177664222,
+          "scores": {
+            "Cosine similarity": 0.13117886937926324,
+            "Dot product": 0.13117887404842296,
+            "Euclidean distance": 1.3181966177664222
+          }
+        },
+        {
+          "rank": 7,
+          "id": "DOC-01:chunk-1",
+          "text": "An embedding represents text as a dense vector of numbers. An embedding model learns patterns so texts with related meanings tend to occupy nearby positions in vector space. A query and the searchable documents must use the same embedding model and dimension. Embeddings support semantic matching even when a question and its answer use different words.",
+          "metadata": {
+            "title": "Text embeddings",
+            "topic": "embeddings",
+            "source": "Course demo notes",
+            "document_id": "DOC-01",
+            "chunk_number": 1,
+            "word_count": 56
+          },
+          "score": 1.3281165449253458,
+          "scores": {
+            "Cosine similarity": 0.11805325912665854,
+            "Dot product": 0.11805326415679107,
+            "Euclidean distance": 1.3281165449253458
+          }
+        },
+        {
+          "rank": 8,
+          "id": "DOC-10:chunk-1",
+          "text": "Chunking splits long documents into smaller searchable passages. Overlap keeps some surrounding words across boundaries and can preserve continuity. Very small chunks lose context while very large chunks may mix topics. Each chunk should have a stable identifier and metadata connecting it back to its source document.",
+          "metadata": {
+            "title": "Chunking documents",
+            "topic": "chunking",
+            "source": "Course demo notes",
+            "document_id": "DOC-10",
+            "chunk_number": 1,
+            "word_count": 47
+          },
+          "score": 1.3336737006858717,
+          "scores": {
+            "Cosine similarity": 0.11065721558711705,
+            "Dot product": 0.11065721378763206,
+            "Euclidean distance": 1.3336737006858717
+          }
+        },
+        {
+          "rank": 9,
+          "id": "DOC-09:chunk-1",
+          "text": "Retrieval augmented generation first embeds a question, retrieves relevant chunks, and places their text in the prompt of a language model. The model then generates an answer grounded in that context. Retrieval scores describe vector relationships, not factual reliability. Cite source chunks and acknowledge when the evidence cannot answer the question.",
+          "metadata": {
+            "title": "Retrieval augmented generation",
+            "topic": "RAG",
+            "source": "Course demo notes",
+            "document_id": "DOC-09",
+            "chunk_number": 1,
+            "word_count": 51
+          },
+          "score": 1.3430198332812389,
+          "scores": {
+            "Cosine similarity": 0.09814885394138274,
+            "Dot product": 0.09814885287862796,
+            "Euclidean distance": 1.3430198332812389
+          }
+        },
+        {
+          "rank": 10,
+          "id": "DOC-11:chunk-1",
+          "text": "Metadata stores attributes such as source, title, topic, document ID, and chunk number. It helps users interpret retrieved evidence and trace an answer to its origin. Metadata can also support filters when implemented. The rank is a result's position after sorting by the chosen scoring function, with rank one representing the best match.",
+          "metadata": {
+            "title": "Metadata and ranks",
+            "topic": "metadata",
+            "source": "Course demo notes",
+            "document_id": "DOC-11",
+            "chunk_number": 1,
+            "word_count": 53
+          },
+          "score": 1.356752958214458,
+          "scores": {
+            "Cosine similarity": 0.07961072225790905,
+            "Dot product": 0.07961072373438774,
+            "Euclidean distance": 1.356752958214458
+          }
+        }
+      ]
+    }
+  ]
+}
