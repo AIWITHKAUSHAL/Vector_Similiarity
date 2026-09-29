@@ -41,6 +41,17 @@ The default chat model is `gemini-3.5-flash-lite`. Set `EURI_MODEL` or edit the 
 
 ## How retrieval works
 
+### Interactive architecture visualizer
+
+Open [docs/architecture_visualizer.html](docs/architecture_visualizer.html) directly in a browser. This standalone, offline page includes a clickable architecture diagram, play/pause and step controls, three walkthrough scenarios, a Python source inspector, and all 12 saved metric/K experiments. Tables, context previews, charts, and JSON exports use `experiment_results.json`. Live generation remains in the Streamlit app.
+
+After changing the Python source or regenerating the experiment report, refresh the embedded snapshots:
+
+```powershell
+python docs/build_visualizer.py
+```
+
+
 `documents → chunks + metadata → local embeddings → query embedding → exact scores → sorted Top-K → EURI prompt → cited answer`
 
 Both documents and queries use the same 384-dimensional MiniLM model. Search scores every chunk and uses stable chunk IDs to break ties. It ranks similarity in descending order and distance in ascending order. The app does not apply additional vector normalization (`normalize_embeddings=False`); model-internal normalization may still make rankings coincide.
