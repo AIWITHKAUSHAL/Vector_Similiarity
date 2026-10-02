@@ -4,7 +4,19 @@ A Streamlit retrieval lab with local semantic embeddings and live, context-groun
 
 ## Run
 
-Python 3.11–3.13 recommended. From this directory in PowerShell:
+Python 3.11–3.13 recommended.
+
+macOS / Linux:
+
+```bash
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+cp .env.example .env
+# Edit .env and set your EURI_API_KEY.
+.venv/bin/python -m streamlit run app.py
+```
+
+Windows (PowerShell):
 
 ```powershell
 python -m venv .venv
@@ -39,7 +51,21 @@ The default chat model is `gemini-3.5-flash-lite`. Set `EURI_MODEL` or edit the 
 6. Compare answer coverage and citations across K. More chunks can add useful support but also irrelevant text. The app reports word/character counts, not fabricated API token counts.
 7. Optionally upload a UTF-8 `.txt` document. It replaces the sample corpus and is chunked into at most 110 words with 25-word overlap. If fewer than K chunks exist, all available chunks are returned.
 
+## App tour
+
+- **Sidebar:** ranking metric, K (1, 3, 5, 10), EURI API key and chat model, optional `.txt` upload.
+- **Retrieved results:** ranked table, per-chunk expanders with metadata and all three scores, JSON download, the exact LLM context, and the **Generate with EURI** button.
+- **K & metric experiments:** K = 1/3/5/10 table, context-size bar chart, all three metrics side by side, JSON download.
+- **How scores work:** formulas and worked examples for each metric.
+- **Embedding and corpus details:** embedding model, chunking rules, and every chunk with its metadata.
+
 ## How retrieval works
+
+### Retrieval pipeline
+
+`documents → chunks + metadata → local embeddings → query embedding → exact scores → sorted Top-K → EURI prompt → cited answer`
+
+Both documents and queries use the same 384-dimensional MiniLM model. Search scores every chunk and uses stable chunk IDs to break ties. It ranks similarity in descending order and distance in ascending order. The app does not apply additional vector normalization (`normalize_embeddings=False`); model-internal normalization may still make rankings coincide.
 
 ### Interactive architecture visualizer
 
@@ -51,10 +77,9 @@ After changing the Python source or regenerating the experiment report, refresh 
 python docs/build_visualizer.py
 ```
 
+### Similarity metrics
 
-`documents → chunks + metadata → local embeddings → query embedding → exact scores → sorted Top-K → EURI prompt → cited answer`
-
-Both documents and queries use the same 384-dimensional MiniLM model. Search scores every chunk and uses stable chunk IDs to break ties. It ranks similarity in descending order and distance in ascending order. The app does not apply additional vector normalization (`normalize_embeddings=False`); model-internal normalization may still make rankings coincide.
+![Vector similarity metrics infographic](docs/vector-similarity-metrics-infographic.png)
 
 | Concept | Formula | Interpretation |
 | --- | --- | --- |
@@ -64,7 +89,23 @@ Both documents and queries use the same 384-dimensional MiniLM model. Search sco
 
 Scores are not confidence percentages or proof of relevance. A search always returns up to K candidates even when evidence is weak. No relevance cutoff, metadata filtering, or reranker is implemented.
 
-For query `[1, 0]`, candidate A `[1, 0]` has cosine 1, dot product 1, and distance 0. Candidate B `[2, 2]` has cosine about 0.707, dot product 2, and distance about 2.236. Thus cosine and distance favor A, while the raw dot product favors B. For unit vectors dot product equals cosine, and squared Euclidean distance equals `2 − 2 × cosine`, giving equivalent rankings.
+### Worked examples
+
+The infographic uses query **Q = [1, 2]** with three documents:
+
+| Document | Dot product (higher = closer) | Cosine (closer to 1 = closer) | Euclidean (lower = closer) |
+| --- | --- | --- | --- |
+| A = [1, 2] | 5 | 1.00 | 0.00 |
+| B = [2, 4] | **10** | 1.00 | 2.24 |
+| C = [−1, −2] | −5 | −1.00 | 4.47 |
+
+- **Dot product** ranks B > A > C: it rewards both direction and magnitude, so the longer vector B wins.
+- **Cosine similarity** ranks A = B > C: it measures direction only, and B points the same way as Q.
+- **Euclidean distance** ranks A < B < C: it measures geometric closeness, so the identical vector A wins.
+
+The app's **How scores work** tab uses a second example: for query `[1, 0]`, candidate A `[1, 0]` has cosine 1, dot product 1, and distance 0. Candidate B `[2, 2]` has cosine about 0.707, dot product 2, and distance about 2.236. Thus cosine and distance favor A, while the raw dot product favors B. For unit vectors dot product equals cosine, and squared Euclidean distance equals `2 − 2 × cosine`, giving equivalent rankings.
+
+### Choosing K
 
 K changes the amount of evidence supplied to the LLM, not the embedding dimension or the scores for individual chunks. For a fixed query and metric, smaller result lists are prefixes of larger ones. Larger K can improve evidence coverage but can increase input tokens, cost, latency, and distraction. It does not guarantee better answers. The generation prompt requests citations and acknowledgement of insufficient evidence; model compliance and citation correctness are not guaranteed and should be checked.
 
@@ -75,10 +116,24 @@ K changes the amount of evidence supplied to the LLM, not the embedding dimensio
 - `data/documents.json`: authored sample corpus and metadata.
 - `tests/test_retrieval.py`: numerical examples, K behavior, chunk boundaries, invalid vectors, and prompt isolation using a mock client.
 - `run_experiments.py`: command-line export of real results for all 12 metric/K combinations.
+- `docs/architecture_visualizer.html`: standalone interactive architecture and experiment viewer.
+- `docs/build_visualizer.py`: refreshes the visualizer's embedded source and report snapshots.
+- `docs/vector-similarity-metrics-infographic.png`: metric comparison infographic.
+- `experiment_results.json`: saved results for all 12 metric/K combinations.
+- `requirements.txt`, `.env.example`: dependencies and configuration template.
 - `VIDEO_SCRIPT.md`: demonstration and explanation outline.
+
+Run the tests:
 
 ```powershell
 python -m unittest discover -s tests -v
+```
+
+Lint and format (uses [Ruff](https://docs.astral.sh/ruff/)):
+
+```bash
+uvx ruff check .
+uvx ruff format .
 ```
 
 To save a reproducible experiment report with every result field:
