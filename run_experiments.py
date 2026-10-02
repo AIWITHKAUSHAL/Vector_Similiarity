@@ -2,14 +2,25 @@
 
 import argparse
 import json
+import os
 from pathlib import Path
 
-from retrieval import K_VALUES, METRICS, build_context, chunk_documents, retrieve
+from dotenv import load_dotenv
+from openai import OpenAI
+
+from retrieval import (
+    K_VALUES,
+    METRICS,
+    build_context,
+    chunk_documents,
+    embed_texts,
+    retrieve,
+)
+
+BASE_URL = "https://api.euron.one/api/v1/euri"
 
 
 def main():
-    from sentence_transformers import SentenceTransformer
-
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--query", default="How does changing K affect the context supplied to an LLM?"
@@ -19,17 +30,17 @@ def main():
     if not args.query.strip():
         parser.error("The query must not be empty.")
     root = Path(__file__).resolve().parent
+    load_dotenv(root / ".env")
+    api_key = os.getenv("EURI_API_KEY", "")
+    if not api_key:
+        parser.error("Set EURI_API_KEY in .env or the environment to create embeddings.")
     chunks = chunk_documents(
         json.loads((root / "data" / "documents.json").read_text(encoding="utf-8"))
     )
-    model_name = "sentence-transformers/all-MiniLM-L6-v2"
-    model = SentenceTransformer(
-        model_name, cache_folder=str(root / ".cache" / "models")
-    )
-    vectors = model.encode(
-        [c.text for c in chunks], normalize_embeddings=False
-    ).tolist()
-    query_vector = model.encode(args.query.strip(), normalize_embeddings=False).tolist()
+    model_name = os.getenv("EURI_EMBEDDING_MODEL", "gemini-embedding-2-preview")
+    with OpenAI(api_key=api_key, base_url=BASE_URL, timeout=60, max_retries=1) as client:
+        vectors = embed_texts(client, model_name, [c.text for c in chunks])
+        query_vector = embed_texts(client, model_name, [args.query.strip()])[0]
     experiments = []
     for metric in METRICS:
         for k in K_VALUES:

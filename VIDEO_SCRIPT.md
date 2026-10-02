@@ -8,7 +8,7 @@ Show the app and the sample corpus. Explain that the notes are authored demo dat
 
 ## 0:40 — Embeddings and chunking
 
-“An embedding represents text as a numerical vector. Related meanings tend to have nearby embeddings. I use the same local MiniLM model for document chunks and the query, producing 384-dimensional vectors. The embedding model is separate from the EURI chat model.”
+“An embedding represents text as a numerical vector. Related meanings tend to have nearby embeddings. I use the same EURI gemini-embedding-2-preview model for document chunks and the query, producing 3072-dimensional vectors. The embedding model is separate from the EURI chat model.”
 
 Show `chunk_documents` in `retrieval.py` and `get_encoder` / `embed_documents` in `app.py`. Explain the 110-word chunk size, 25-word overlap, source metadata, and local caching.
 

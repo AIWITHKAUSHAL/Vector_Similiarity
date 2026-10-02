@@ -1,7 +1,7 @@
 {
   "query": "How does changing K affect the context supplied to an LLM?",
-  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
-  "dimensions": 384,
+  "embedding_model": "gemini-embedding-001",
+  "dimensions": 3072,
   "experiments": [
     {
       "metric": "Cosine similarity",
@@ -22,11 +22,11 @@
             "chunk_number": 1,
             "word_count": 61
           },
-          "score": 0.503172106847389,
+          "score": 0.8136617525671102,
           "scores": {
-            "Cosine similarity": 0.503172106847389,
-            "Dot product": 0.5031721205517639,
-            "Euclidean distance": 0.9968228595735505
+            "Cosine similarity": 0.8136617525671102,
+            "Dot product": 0.8136617084603665,
+            "Euclidean distance": 0.6104723373453045
           }
         }
       ]
@@ -50,11 +50,11 @@
             "chunk_number": 1,
             "word_count": 61
           },
-          "score": 0.503172106847389,
+          "score": 0.8136617525671102,
           "scores": {
-            "Cosine similarity": 0.503172106847389,
-            "Dot product": 0.5031721205517639,
-            "Euclidean distance": 0.9968228595735505
+            "Cosine similarity": 0.8136617525671102,
+            "Dot product": 0.8136617084603665,
+            "Euclidean distance": 0.6104723373453045
           }
         },
         {
@@ -69,11 +69,11 @@
             "chunk_number": 1,
             "word_count": 58
           },
-          "score": 0.42128302541755075,
+          "score": 0.8125096772620083,
           "scores": {
-            "Cosine similarity": 0.42128302541755075,
-            "Dot product": 0.4212830447180984,
-            "Euclidean distance": 1.0758410673474346
+            "Cosine similarity": 0.8125096772620083,
+            "Dot product": 0.8125096452123597,
+            "Euclidean distance": 0.6123566205119187
           }
         },
         {
@@ -88,11 +88,11 @@
             "chunk_number": 1,
             "word_count": 55
           },
-          "score": 0.3012592689935651,
+          "score": 0.7647781351806024,
           "scores": {
-            "Cosine similarity": 0.3012592689935651,
-            "Dot product": 0.30125927773034955,
-            "Euclidean distance": 1.182151218136269
+            "Cosine similarity": 0.7647781351806024,
+            "Dot product": 0.7647781464343344,
+            "Euclidean distance": 0.6858890118389348
           }
         }
       ]
@@ -116,11 +116,11 @@
             "chunk_number": 1,
             "word_count": 61
           },
-          "score": 0.503172106847389,
+          "score": 0.8136617525671102,
           "scores": {
-            "Cosine similarity": 0.503172106847389,
-            "Dot product": 0.5031721205517639,
-            "Euclidean distance": 0.9968228595735505
+            "Cosine similarity": 0.8136617525671102,
+            "Dot product": 0.8136617084603665,
+            "Euclidean distance": 0.6104723373453045
           }
         },
         {
@@ -135,11 +135,11 @@
             "chunk_number": 1,
             "word_count": 58
           },
-          "score": 0.42128302541755075,
+          "score": 0.8125096772620083,
           "scores": {
-            "Cosine similarity": 0.42128302541755075,
-            "Dot product": 0.4212830447180984,
-            "Euclidean distance": 1.0758410673474346
+            "Cosine similarity": 0.8125096772620083,
+            "Dot product": 0.8125096452123597,
+            "Euclidean distance": 0.6123566205119187
           }
         },
         {
@@ -154,34 +154,15 @@
             "chunk_number": 1,
             "word_count": 55
           },
-          "score": 0.3012592689935651,
+          "score": 0.7647781351806024,
           "scores": {
-            "Cosine similarity": 0.3012592689935651,
-            "Dot product": 0.30125927773034955,
-            "Euclidean distance": 1.182151218136269
+            "Cosine similarity": 0.7647781351806024,
+            "Dot product": 0.7647781464343344,
+            "Euclidean distance": 0.6858890118389348
           }
         },
         {
           "rank": 4,
-          "id": "DOC-05:chunk-1",
-          "text": "Top-K retrieval scores a query against document embeddings and selects the K highest similarities or K lowest distances. K is the number of retrieved chunks, not a similarity threshold. Exact search evaluates every stored vector and is convenient for small datasets. Approximate nearest neighbor indexes trade some recall for speed at much larger scale.",
-          "metadata": {
-            "title": "Top-K search",
-            "topic": "retrieval",
-            "source": "Course demo notes",
-            "document_id": "DOC-05",
-            "chunk_number": 1,
-            "word_count": 54
-          },
-          "score": 0.2530462792355502,
-          "scores": {
-            "Cosine similarity": 0.2530462792355502,
-            "Dot product": 0.2530462842964622,
-            "Euclidean distance": 1.2222550762451219
-          }
-        },
-        {
-          "rank": 5,
           "id": "DOC-13:chunk-1",
           "text": "To evaluate retrieval, use test questions with known relevant chunks. Precision at K measures how many retrieved chunks are relevant divided by K. Recall at K measures retrieved relevant chunks divided by all known relevant chunks. Increasing K may improve recall but reduce precision; neither behavior is guaranteed on every dataset.",
           "metadata": {
@@ -192,11 +173,30 @@
             "chunk_number": 1,
             "word_count": 51
           },
-          "score": 0.16836264193059663,
+          "score": 0.7155093144138372,
           "scores": {
-            "Cosine similarity": 0.16836264193059663,
-            "Dot product": 0.16836264390433764,
-            "Euclidean distance": 1.2896800904246104
+            "Cosine similarity": 0.7155093144138372,
+            "Dot product": 0.7155093336766889,
+            "Euclidean distance": 0.75430854859956
+          }
+        },
+        {
+          "rank": 5,
+          "id": "DOC-05:chunk-1",
+          "text": "Top-K retrieval scores a query against document embeddings and selects the K highest similarities or K lowest distances. K is the number of retrieved chunks, not a similarity threshold. Exact search evaluates every stored vector and is convenient for small datasets. Approximate nearest neighbor indexes trade some recall for speed at much larger scale.",
+          "metadata": {
+            "title": "Top-K search",
+            "topic": "retrieval",
+            "source": "Course demo notes",
+            "document_id": "DOC-05",
+            "chunk_number": 1,
+            "word_count": 54
+          },
+          "score": 0.6835825750333782,
+          "scores": {
+            "Cosine similarity": 0.6835825750333782,
+            "Dot product": 0.6835825697992142,
+            "Euclidean distance": 0.7955091734780022
           }
         }
       ]
@@ -205,8 +205,8 @@
       "metric": "Cosine similarity",
       "k": 10,
       "actual_chunks": 10,
-      "context_words": 543,
-      "context_characters": 3654,
+      "context_words": 546,
+      "context_characters": 3637,
       "results": [
         {
           "rank": 1,
@@ -220,11 +220,11 @@
             "chunk_number": 1,
             "word_count": 61
           },
-          "score": 0.503172106847389,
+          "score": 0.8136617525671102,
           "scores": {
-            "Cosine similarity": 0.503172106847389,
-            "Dot product": 0.5031721205517639,
-            "Euclidean distance": 0.9968228595735505
+            "Cosine similarity": 0.8136617525671102,
+            "Dot product": 0.8136617084603665,
+            "Euclidean distance": 0.6104723373453045
           }
         },
         {
@@ -239,11 +239,11 @@
             "chunk_number": 1,
             "word_count": 58
           },
-          "score": 0.42128302541755075,
+          "score": 0.8125096772620083,
           "scores": {
-            "Cosine similarity": 0.42128302541755075,
-            "Dot product": 0.4212830447180984,
-            "Euclidean distance": 1.0758410673474346
+            "Cosine similarity": 0.8125096772620083,
+            "Dot product": 0.8125096452123597,
+            "Euclidean distance": 0.6123566205119187
           }
         },
         {
@@ -258,34 +258,15 @@
             "chunk_number": 1,
             "word_count": 55
           },
-          "score": 0.3012592689935651,
+          "score": 0.7647781351806024,
           "scores": {
-            "Cosine similarity": 0.3012592689935651,
-            "Dot product": 0.30125927773034955,
-            "Euclidean distance": 1.182151218136269
+            "Cosine similarity": 0.7647781351806024,
+            "Dot product": 0.7647781464343344,
+            "Euclidean distance": 0.6858890118389348
           }
         },
         {
           "rank": 4,
-          "id": "DOC-05:chunk-1",
-          "text": "Top-K retrieval scores a query against document embeddings and selects the K highest similarities or K lowest distances. K is the number of retrieved chunks, not a similarity threshold. Exact search evaluates every stored vector and is convenient for small datasets. Approximate nearest neighbor indexes trade some recall for speed at much larger scale.",
-          "metadata": {
-            "title": "Top-K search",
-            "topic": "retrieval",
-            "source": "Course demo notes",
-            "document_id": "DOC-05",
-            "chunk_number": 1,
-            "word_count": 54
-          },
-          "score": 0.2530462792355502,
-          "scores": {
-            "Cosine similarity": 0.2530462792355502,
-            "Dot product": 0.2530462842964622,
-            "Euclidean distance": 1.2222550762451219
-          }
-        },
-        {
-          "rank": 5,
           "id": "DOC-13:chunk-1",
           "text": "To evaluate retrieval, use test questions with known relevant chunks. Precision at K measures how many retrieved chunks are relevant divided by K. Recall at K measures retrieved relevant chunks divided by all known relevant chunks. Increasing K may improve recall but reduce precision; neither behavior is guaranteed on every dataset.",
           "metadata": {
@@ -296,49 +277,68 @@
             "chunk_number": 1,
             "word_count": 51
           },
-          "score": 0.16836264193059663,
+          "score": 0.7155093144138372,
           "scores": {
-            "Cosine similarity": 0.16836264193059663,
-            "Dot product": 0.16836264390433764,
-            "Euclidean distance": 1.2896800904246104
+            "Cosine similarity": 0.7155093144138372,
+            "Dot product": 0.7155093336766889,
+            "Euclidean distance": 0.75430854859956
+          }
+        },
+        {
+          "rank": 5,
+          "id": "DOC-05:chunk-1",
+          "text": "Top-K retrieval scores a query against document embeddings and selects the K highest similarities or K lowest distances. K is the number of retrieved chunks, not a similarity threshold. Exact search evaluates every stored vector and is convenient for small datasets. Approximate nearest neighbor indexes trade some recall for speed at much larger scale.",
+          "metadata": {
+            "title": "Top-K search",
+            "topic": "retrieval",
+            "source": "Course demo notes",
+            "document_id": "DOC-05",
+            "chunk_number": 1,
+            "word_count": 54
+          },
+          "score": 0.6835825750333782,
+          "scores": {
+            "Cosine similarity": 0.6835825750333782,
+            "Dot product": 0.6835825697992142,
+            "Euclidean distance": 0.7955091734780022
           }
         },
         {
           "rank": 6,
-          "id": "DOC-12:chunk-1",
-          "text": "Vector normalization divides a vector by its Euclidean length to create a unit vector. Normalizing removes magnitude differences. Cosine similarity is invariant to positive rescaling, while raw dot product and raw Euclidean distance can change. Compare metrics carefully and explicitly state whether your embeddings have been normalized.",
+          "id": "DOC-09:chunk-1",
+          "text": "Retrieval augmented generation first embeds a question, retrieves relevant chunks, and places their text in the prompt of a language model. The model then generates an answer grounded in that context. Retrieval scores describe vector relationships, not factual reliability. Cite source chunks and acknowledge when the evidence cannot answer the question.",
           "metadata": {
-            "title": "Normalization",
-            "topic": "similarity",
+            "title": "Retrieval augmented generation",
+            "topic": "RAG",
             "source": "Course demo notes",
-            "document_id": "DOC-12",
+            "document_id": "DOC-09",
             "chunk_number": 1,
-            "word_count": 47
+            "word_count": 51
           },
-          "score": 0.13117886937926324,
+          "score": 0.6527127806817955,
           "scores": {
-            "Cosine similarity": 0.13117886937926324,
-            "Dot product": 0.13117887404842296,
-            "Euclidean distance": 1.3181966177664222
+            "Cosine similarity": 0.6527127806817955,
+            "Dot product": 0.6527127735134173,
+            "Euclidean distance": 0.8334113216223358
           }
         },
         {
           "rank": 7,
-          "id": "DOC-01:chunk-1",
-          "text": "An embedding represents text as a dense vector of numbers. An embedding model learns patterns so texts with related meanings tend to occupy nearby positions in vector space. A query and the searchable documents must use the same embedding model and dimension. Embeddings support semantic matching even when a question and its answer use different words.",
+          "id": "DOC-14:chunk-1",
+          "text": "Live language model requests require a valid API key and network connection. Keep API keys in environment variables rather than source code or public GitHub repositories. Only send text you are allowed to share with the provider. A retrieval application can still show search results without making a generation request.",
           "metadata": {
-            "title": "Text embeddings",
-            "topic": "embeddings",
+            "title": "Live LLM integration",
+            "topic": "LLM",
             "source": "Course demo notes",
-            "document_id": "DOC-01",
+            "document_id": "DOC-14",
             "chunk_number": 1,
-            "word_count": 56
+            "word_count": 50
           },
-          "score": 0.11805325912665854,
+          "score": 0.6229550274816161,
           "scores": {
-            "Cosine similarity": 0.11805325912665854,
-            "Dot product": 0.11805326415679107,
-            "Euclidean distance": 1.3281165449253458
+            "Cosine similarity": 0.6229550274816161,
+            "Dot product": 0.6229550422740321,
+            "Euclidean distance": 0.868383534472562
           }
         },
         {
@@ -353,30 +353,30 @@
             "chunk_number": 1,
             "word_count": 47
           },
-          "score": 0.11065721558711705,
+          "score": 0.6140322029791798,
           "scores": {
-            "Cosine similarity": 0.11065721558711705,
-            "Dot product": 0.11065721378763206,
-            "Euclidean distance": 1.3336737006858717
+            "Cosine similarity": 0.6140322029791798,
+            "Dot product": 0.6140321887970316,
+            "Euclidean distance": 0.878598643416001
           }
         },
         {
           "rank": 9,
-          "id": "DOC-09:chunk-1",
-          "text": "Retrieval augmented generation first embeds a question, retrieves relevant chunks, and places their text in the prompt of a language model. The model then generates an answer grounded in that context. Retrieval scores describe vector relationships, not factual reliability. Cite source chunks and acknowledge when the evidence cannot answer the question.",
+          "id": "DOC-01:chunk-1",
+          "text": "An embedding represents text as a dense vector of numbers. An embedding model learns patterns so texts with related meanings tend to occupy nearby positions in vector space. A query and the searchable documents must use the same embedding model and dimension. Embeddings support semantic matching even when a question and its answer use different words.",
           "metadata": {
-            "title": "Retrieval augmented generation",
-            "topic": "RAG",
+            "title": "Text embeddings",
+            "topic": "embeddings",
             "source": "Course demo notes",
-            "document_id": "DOC-09",
+            "document_id": "DOC-01",
             "chunk_number": 1,
-            "word_count": 51
+            "word_count": 56
           },
-          "score": 0.09814885394138274,
+          "score": 0.5975545423918079,
           "scores": {
-            "Cosine similarity": 0.09814885394138274,
-            "Dot product": 0.09814885287862796,
-            "Euclidean distance": 1.3430198332812389
+            "Cosine similarity": 0.5975545423918079,
+            "Dot product": 0.5975545166047557,
+            "Euclidean distance": 0.8971571102554304
           }
         },
         {
@@ -391,11 +391,11 @@
             "chunk_number": 1,
             "word_count": 53
           },
-          "score": 0.07961072225790905,
+          "score": 0.5875626681807281,
           "scores": {
-            "Cosine similarity": 0.07961072225790905,
-            "Dot product": 0.07961072373438774,
-            "Euclidean distance": 1.356752958214458
+            "Cosine similarity": 0.5875626681807281,
+            "Dot product": 0.587562626392506,
+            "Euclidean distance": 0.9082260759152343
           }
         }
       ]
@@ -419,11 +419,11 @@
             "chunk_number": 1,
             "word_count": 61
           },
-          "score": 0.5031721205517639,
+          "score": 0.8136617084603665,
           "scores": {
-            "Cosine similarity": 0.503172106847389,
-            "Dot product": 0.5031721205517639,
-            "Euclidean distance": 0.9968228595735505
+            "Cosine similarity": 0.8136617525671102,
+            "Dot product": 0.8136617084603665,
+            "Euclidean distance": 0.6104723373453045
           }
         }
       ]
@@ -447,11 +447,11 @@
             "chunk_number": 1,
             "word_count": 61
           },
-          "score": 0.5031721205517639,
+          "score": 0.8136617084603665,
           "scores": {
-            "Cosine similarity": 0.503172106847389,
-            "Dot product": 0.5031721205517639,
-            "Euclidean distance": 0.9968228595735505
+            "Cosine similarity": 0.8136617525671102,
+            "Dot product": 0.8136617084603665,
+            "Euclidean distance": 0.6104723373453045
           }
         },
         {
@@ -466,11 +466,11 @@
             "chunk_number": 1,
             "word_count": 58
           },
-          "score": 0.4212830447180984,
+          "score": 0.8125096452123597,
           "scores": {
-            "Cosine similarity": 0.42128302541755075,
-            "Dot product": 0.4212830447180984,
-            "Euclidean distance": 1.0758410673474346
+            "Cosine similarity": 0.8125096772620083,
+            "Dot product": 0.8125096452123597,
+            "Euclidean distance": 0.6123566205119187
           }
         },
         {
@@ -485,11 +485,11 @@
             "chunk_number": 1,
             "word_count": 55
           },
-          "score": 0.30125927773034955,
+          "score": 0.7647781464343344,
           "scores": {
-            "Cosine similarity": 0.3012592689935651,
-            "Dot product": 0.30125927773034955,
-            "Euclidean distance": 1.182151218136269
+            "Cosine similarity": 0.7647781351806024,
+            "Dot product": 0.7647781464343344,
+            "Euclidean distance": 0.6858890118389348
           }
         }
       ]
@@ -513,11 +513,11 @@
             "chunk_number": 1,
             "word_count": 61
           },
-          "score": 0.5031721205517639,
+          "score": 0.8136617084603665,
           "scores": {
-            "Cosine similarity": 0.503172106847389,
-            "Dot product": 0.5031721205517639,
-            "Euclidean distance": 0.9968228595735505
+            "Cosine similarity": 0.8136617525671102,
+            "Dot product": 0.8136617084603665,
+            "Euclidean distance": 0.6104723373453045
           }
         },
         {
@@ -532,11 +532,11 @@
             "chunk_number": 1,
             "word_count": 58
           },
-          "score": 0.4212830447180984,
+          "score": 0.8125096452123597,
           "scores": {
-            "Cosine similarity": 0.42128302541755075,
-            "Dot product": 0.4212830447180984,
-            "Euclidean distance": 1.0758410673474346
+            "Cosine similarity": 0.8125096772620083,
+            "Dot product": 0.8125096452123597,
+            "Euclidean distance": 0.6123566205119187
           }
         },
         {
@@ -551,34 +551,15 @@
             "chunk_number": 1,
             "word_count": 55
           },
-          "score": 0.30125927773034955,
+          "score": 0.7647781464343344,
           "scores": {
-            "Cosine similarity": 0.3012592689935651,
-            "Dot product": 0.30125927773034955,
-            "Euclidean distance": 1.182151218136269
+            "Cosine similarity": 0.7647781351806024,
+            "Dot product": 0.7647781464343344,
+            "Euclidean distance": 0.6858890118389348
           }
         },
         {
           "rank": 4,
-          "id": "DOC-05:chunk-1",
-          "text": "Top-K retrieval scores a query against document embeddings and selects the K highest similarities or K lowest distances. K is the number of retrieved chunks, not a similarity threshold. Exact search evaluates every stored vector and is convenient for small datasets. Approximate nearest neighbor indexes trade some recall for speed at much larger scale.",
-          "metadata": {
-            "title": "Top-K search",
-            "topic": "retrieval",
-            "source": "Course demo notes",
-            "document_id": "DOC-05",
-            "chunk_number": 1,
-            "word_count": 54
-          },
-          "score": 0.2530462842964622,
-          "scores": {
-            "Cosine similarity": 0.2530462792355502,
-            "Dot product": 0.2530462842964622,
-            "Euclidean distance": 1.2222550762451219
-          }
-        },
-        {
-          "rank": 5,
           "id": "DOC-13:chunk-1",
           "text": "To evaluate retrieval, use test questions with known relevant chunks. Precision at K measures how many retrieved chunks are relevant divided by K. Recall at K measures retrieved relevant chunks divided by all known relevant chunks. Increasing K may improve recall but reduce precision; neither behavior is guaranteed on every dataset.",
           "metadata": {
@@ -589,11 +570,30 @@
             "chunk_number": 1,
             "word_count": 51
           },
-          "score": 0.16836264390433764,
+          "score": 0.7155093336766889,
           "scores": {
-            "Cosine similarity": 0.16836264193059663,
-            "Dot product": 0.16836264390433764,
-            "Euclidean distance": 1.2896800904246104
+            "Cosine similarity": 0.7155093144138372,
+            "Dot product": 0.7155093336766889,
+            "Euclidean distance": 0.75430854859956
+          }
+        },
+        {
+          "rank": 5,
+          "id": "DOC-05:chunk-1",
+          "text": "Top-K retrieval scores a query against document embeddings and selects the K highest similarities or K lowest distances. K is the number of retrieved chunks, not a similarity threshold. Exact search evaluates every stored vector and is convenient for small datasets. Approximate nearest neighbor indexes trade some recall for speed at much larger scale.",
+          "metadata": {
+            "title": "Top-K search",
+            "topic": "retrieval",
+            "source": "Course demo notes",
+            "document_id": "DOC-05",
+            "chunk_number": 1,
+            "word_count": 54
+          },
+          "score": 0.6835825697992142,
+          "scores": {
+            "Cosine similarity": 0.6835825750333782,
+            "Dot product": 0.6835825697992142,
+            "Euclidean distance": 0.7955091734780022
           }
         }
       ]
@@ -602,8 +602,8 @@
       "metric": "Dot product",
       "k": 10,
       "actual_chunks": 10,
-      "context_words": 543,
-      "context_characters": 3654,
+      "context_words": 546,
+      "context_characters": 3637,
       "results": [
         {
           "rank": 1,
@@ -617,11 +617,11 @@
             "chunk_number": 1,
             "word_count": 61
           },
-          "score": 0.5031721205517639,
+          "score": 0.8136617084603665,
           "scores": {
-            "Cosine similarity": 0.503172106847389,
-            "Dot product": 0.5031721205517639,
-            "Euclidean distance": 0.9968228595735505
+            "Cosine similarity": 0.8136617525671102,
+            "Dot product": 0.8136617084603665,
+            "Euclidean distance": 0.6104723373453045
           }
         },
         {
@@ -636,11 +636,11 @@
             "chunk_number": 1,
             "word_count": 58
           },
-          "score": 0.4212830447180984,
+          "score": 0.8125096452123597,
           "scores": {
-            "Cosine similarity": 0.42128302541755075,
-            "Dot product": 0.4212830447180984,
-            "Euclidean distance": 1.0758410673474346
+            "Cosine similarity": 0.8125096772620083,
+            "Dot product": 0.8125096452123597,
+            "Euclidean distance": 0.6123566205119187
           }
         },
         {
@@ -655,34 +655,15 @@
             "chunk_number": 1,
             "word_count": 55
           },
-          "score": 0.30125927773034955,
+          "score": 0.7647781464343344,
           "scores": {
-            "Cosine similarity": 0.3012592689935651,
-            "Dot product": 0.30125927773034955,
-            "Euclidean distance": 1.182151218136269
+            "Cosine similarity": 0.7647781351806024,
+            "Dot product": 0.7647781464343344,
+            "Euclidean distance": 0.6858890118389348
           }
         },
         {
           "rank": 4,
-          "id": "DOC-05:chunk-1",
-          "text": "Top-K retrieval scores a query against document embeddings and selects the K highest similarities or K lowest distances. K is the number of retrieved chunks, not a similarity threshold. Exact search evaluates every stored vector and is convenient for small datasets. Approximate nearest neighbor indexes trade some recall for speed at much larger scale.",
-          "metadata": {
-            "title": "Top-K search",
-            "topic": "retrieval",
-            "source": "Course demo notes",
-            "document_id": "DOC-05",
-            "chunk_number": 1,
-            "word_count": 54
-          },
-          "score": 0.2530462842964622,
-          "scores": {
-            "Cosine similarity": 0.2530462792355502,
-            "Dot product": 0.2530462842964622,
-            "Euclidean distance": 1.2222550762451219
-          }
-        },
-        {
-          "rank": 5,
           "id": "DOC-13:chunk-1",
           "text": "To evaluate retrieval, use test questions with known relevant chunks. Precision at K measures how many retrieved chunks are relevant divided by K. Recall at K measures retrieved relevant chunks divided by all known relevant chunks. Increasing K may improve recall but reduce precision; neither behavior is guaranteed on every dataset.",
           "metadata": {
@@ -693,49 +674,68 @@
             "chunk_number": 1,
             "word_count": 51
           },
-          "score": 0.16836264390433764,
+          "score": 0.7155093336766889,
           "scores": {
-            "Cosine similarity": 0.16836264193059663,
-            "Dot product": 0.16836264390433764,
-            "Euclidean distance": 1.2896800904246104
+            "Cosine similarity": 0.7155093144138372,
+            "Dot product": 0.7155093336766889,
+            "Euclidean distance": 0.75430854859956
+          }
+        },
+        {
+          "rank": 5,
+          "id": "DOC-05:chunk-1",
+          "text": "Top-K retrieval scores a query against document embeddings and selects the K highest similarities or K lowest distances. K is the number of retrieved chunks, not a similarity threshold. Exact search evaluates every stored vector and is convenient for small datasets. Approximate nearest neighbor indexes trade some recall for speed at much larger scale.",
+          "metadata": {
+            "title": "Top-K search",
+            "topic": "retrieval",
+            "source": "Course demo notes",
+            "document_id": "DOC-05",
+            "chunk_number": 1,
+            "word_count": 54
+          },
+          "score": 0.6835825697992142,
+          "scores": {
+            "Cosine similarity": 0.6835825750333782,
+            "Dot product": 0.6835825697992142,
+            "Euclidean distance": 0.7955091734780022
           }
         },
         {
           "rank": 6,
-          "id": "DOC-12:chunk-1",
-          "text": "Vector normalization divides a vector by its Euclidean length to create a unit vector. Normalizing removes magnitude differences. Cosine similarity is invariant to positive rescaling, while raw dot product and raw Euclidean distance can change. Compare metrics carefully and explicitly state whether your embeddings have been normalized.",
+          "id": "DOC-09:chunk-1",
+          "text": "Retrieval augmented generation first embeds a question, retrieves relevant chunks, and places their text in the prompt of a language model. The model then generates an answer grounded in that context. Retrieval scores describe vector relationships, not factual reliability. Cite source chunks and acknowledge when the evidence cannot answer the question.",
           "metadata": {
-            "title": "Normalization",
-            "topic": "similarity",
+            "title": "Retrieval augmented generation",
+            "topic": "RAG",
             "source": "Course demo notes",
-            "document_id": "DOC-12",
+            "document_id": "DOC-09",
             "chunk_number": 1,
-            "word_count": 47
+            "word_count": 51
           },
-          "score": 0.13117887404842296,
+          "score": 0.6527127735134173,
           "scores": {
-            "Cosine similarity": 0.13117886937926324,
-            "Dot product": 0.13117887404842296,
-            "Euclidean distance": 1.3181966177664222
+            "Cosine similarity": 0.6527127806817955,
+            "Dot product": 0.6527127735134173,
+            "Euclidean distance": 0.8334113216223358
           }
         },
         {
           "rank": 7,
-          "id": "DOC-01:chunk-1",
-          "text": "An embedding represents text as a dense vector of numbers. An embedding model learns patterns so texts with related meanings tend to occupy nearby positions in vector space. A query and the searchable documents must use the same embedding model and dimension. Embeddings support semantic matching even when a question and its answer use different words.",
+          "id": "DOC-14:chunk-1",
+          "text": "Live language model requests require a valid API key and network connection. Keep API keys in environment variables rather than source code or public GitHub repositories. Only send text you are allowed to share with the provider. A retrieval application can still show search results without making a generation request.",
           "metadata": {
-            "title": "Text embeddings",
-            "topic": "embeddings",
+            "title": "Live LLM integration",
+            "topic": "LLM",
             "source": "Course demo notes",
-            "document_id": "DOC-01",
+            "document_id": "DOC-14",
             "chunk_number": 1,
-            "word_count": 56
+            "word_count": 50
           },
-          "score": 0.11805326415679107,
+          "score": 0.6229550422740321,
           "scores": {
-            "Cosine similarity": 0.11805325912665854,
-            "Dot product": 0.11805326415679107,
-            "Euclidean distance": 1.3281165449253458
+            "Cosine similarity": 0.6229550274816161,
+            "Dot product": 0.6229550422740321,
+            "Euclidean distance": 0.868383534472562
           }
         },
         {
@@ -750,30 +750,30 @@
             "chunk_number": 1,
             "word_count": 47
           },
-          "score": 0.11065721378763206,
+          "score": 0.6140321887970316,
           "scores": {
-            "Cosine similarity": 0.11065721558711705,
-            "Dot product": 0.11065721378763206,
-            "Euclidean distance": 1.3336737006858717
+            "Cosine similarity": 0.6140322029791798,
+            "Dot product": 0.6140321887970316,
+            "Euclidean distance": 0.878598643416001
           }
         },
         {
           "rank": 9,
-          "id": "DOC-09:chunk-1",
-          "text": "Retrieval augmented generation first embeds a question, retrieves relevant chunks, and places their text in the prompt of a language model. The model then generates an answer grounded in that context. Retrieval scores describe vector relationships, not factual reliability. Cite source chunks and acknowledge when the evidence cannot answer the question.",
+          "id": "DOC-01:chunk-1",
+          "text": "An embedding represents text as a dense vector of numbers. An embedding model learns patterns so texts with related meanings tend to occupy nearby positions in vector space. A query and the searchable documents must use the same embedding model and dimension. Embeddings support semantic matching even when a question and its answer use different words.",
           "metadata": {
-            "title": "Retrieval augmented generation",
-            "topic": "RAG",
+            "title": "Text embeddings",
+            "topic": "embeddings",
             "source": "Course demo notes",
-            "document_id": "DOC-09",
+            "document_id": "DOC-01",
             "chunk_number": 1,
-            "word_count": 51
+            "word_count": 56
           },
-          "score": 0.09814885287862796,
+          "score": 0.5975545166047557,
           "scores": {
-            "Cosine similarity": 0.09814885394138274,
-            "Dot product": 0.09814885287862796,
-            "Euclidean distance": 1.3430198332812389
+            "Cosine similarity": 0.5975545423918079,
+            "Dot product": 0.5975545166047557,
+            "Euclidean distance": 0.8971571102554304
           }
         },
         {
@@ -788,11 +788,11 @@
             "chunk_number": 1,
             "word_count": 53
           },
-          "score": 0.07961072373438774,
+          "score": 0.587562626392506,
           "scores": {
-            "Cosine similarity": 0.07961072225790905,
-            "Dot product": 0.07961072373438774,
-            "Euclidean distance": 1.356752958214458
+            "Cosine similarity": 0.5875626681807281,
+            "Dot product": 0.587562626392506,
+            "Euclidean distance": 0.9082260759152343
           }
         }
       ]
@@ -816,11 +816,11 @@
             "chunk_number": 1,
             "word_count": 61
           },
-          "score": 0.9968228595735505,
+          "score": 0.6104723373453045,
           "scores": {
-            "Cosine similarity": 0.503172106847389,
-            "Dot product": 0.5031721205517639,
-            "Euclidean distance": 0.9968228595735505
+            "Cosine similarity": 0.8136617525671102,
+            "Dot product": 0.8136617084603665,
+            "Euclidean distance": 0.6104723373453045
           }
         }
       ]
@@ -844,11 +844,11 @@
             "chunk_number": 1,
             "word_count": 61
           },
-          "score": 0.9968228595735505,
+          "score": 0.6104723373453045,
           "scores": {
-            "Cosine similarity": 0.503172106847389,
-            "Dot product": 0.5031721205517639,
-            "Euclidean distance": 0.9968228595735505
+            "Cosine similarity": 0.8136617525671102,
+            "Dot product": 0.8136617084603665,
+            "Euclidean distance": 0.6104723373453045
           }
         },
         {
@@ -863,11 +863,11 @@
             "chunk_number": 1,
             "word_count": 58
           },
-          "score": 1.0758410673474346,
+          "score": 0.6123566205119187,
           "scores": {
-            "Cosine similarity": 0.42128302541755075,
-            "Dot product": 0.4212830447180984,
-            "Euclidean distance": 1.0758410673474346
+            "Cosine similarity": 0.8125096772620083,
+            "Dot product": 0.8125096452123597,
+            "Euclidean distance": 0.6123566205119187
           }
         },
         {
@@ -882,11 +882,11 @@
             "chunk_number": 1,
             "word_count": 55
           },
-          "score": 1.182151218136269,
+          "score": 0.6858890118389348,
           "scores": {
-            "Cosine similarity": 0.3012592689935651,
-            "Dot product": 0.30125927773034955,
-            "Euclidean distance": 1.182151218136269
+            "Cosine similarity": 0.7647781351806024,
+            "Dot product": 0.7647781464343344,
+            "Euclidean distance": 0.6858890118389348
           }
         }
       ]
@@ -910,11 +910,11 @@
             "chunk_number": 1,
             "word_count": 61
           },
-          "score": 0.9968228595735505,
+          "score": 0.6104723373453045,
           "scores": {
-            "Cosine similarity": 0.503172106847389,
-            "Dot product": 0.5031721205517639,
-            "Euclidean distance": 0.9968228595735505
+            "Cosine similarity": 0.8136617525671102,
+            "Dot product": 0.8136617084603665,
+            "Euclidean distance": 0.6104723373453045
           }
         },
         {
@@ -929,11 +929,11 @@
             "chunk_number": 1,
             "word_count": 58
           },
-          "score": 1.0758410673474346,
+          "score": 0.6123566205119187,
           "scores": {
-            "Cosine similarity": 0.42128302541755075,
-            "Dot product": 0.4212830447180984,
-            "Euclidean distance": 1.0758410673474346
+            "Cosine similarity": 0.8125096772620083,
+            "Dot product": 0.8125096452123597,
+            "Euclidean distance": 0.6123566205119187
           }
         },
         {
@@ -948,34 +948,15 @@
             "chunk_number": 1,
             "word_count": 55
           },
-          "score": 1.182151218136269,
+          "score": 0.6858890118389348,
           "scores": {
-            "Cosine similarity": 0.3012592689935651,
-            "Dot product": 0.30125927773034955,
-            "Euclidean distance": 1.182151218136269
+            "Cosine similarity": 0.7647781351806024,
+            "Dot product": 0.7647781464343344,
+            "Euclidean distance": 0.6858890118389348
           }
         },
         {
           "rank": 4,
-          "id": "DOC-05:chunk-1",
-          "text": "Top-K retrieval scores a query against document embeddings and selects the K highest similarities or K lowest distances. K is the number of retrieved chunks, not a similarity threshold. Exact search evaluates every stored vector and is convenient for small datasets. Approximate nearest neighbor indexes trade some recall for speed at much larger scale.",
-          "metadata": {
-            "title": "Top-K search",
-            "topic": "retrieval",
-            "source": "Course demo notes",
-            "document_id": "DOC-05",
-            "chunk_number": 1,
-            "word_count": 54
-          },
-          "score": 1.2222550762451219,
-          "scores": {
-            "Cosine similarity": 0.2530462792355502,
-            "Dot product": 0.2530462842964622,
-            "Euclidean distance": 1.2222550762451219
-          }
-        },
-        {
-          "rank": 5,
           "id": "DOC-13:chunk-1",
           "text": "To evaluate retrieval, use test questions with known relevant chunks. Precision at K measures how many retrieved chunks are relevant divided by K. Recall at K measures retrieved relevant chunks divided by all known relevant chunks. Increasing K may improve recall but reduce precision; neither behavior is guaranteed on every dataset.",
           "metadata": {
@@ -986,11 +967,30 @@
             "chunk_number": 1,
             "word_count": 51
           },
-          "score": 1.2896800904246104,
+          "score": 0.75430854859956,
           "scores": {
-            "Cosine similarity": 0.16836264193059663,
-            "Dot product": 0.16836264390433764,
-            "Euclidean distance": 1.2896800904246104
+            "Cosine similarity": 0.7155093144138372,
+            "Dot product": 0.7155093336766889,
+            "Euclidean distance": 0.75430854859956
+          }
+        },
+        {
+          "rank": 5,
+          "id": "DOC-05:chunk-1",
+          "text": "Top-K retrieval scores a query against document embeddings and selects the K highest similarities or K lowest distances. K is the number of retrieved chunks, not a similarity threshold. Exact search evaluates every stored vector and is convenient for small datasets. Approximate nearest neighbor indexes trade some recall for speed at much larger scale.",
+          "metadata": {
+            "title": "Top-K search",
+            "topic": "retrieval",
+            "source": "Course demo notes",
+            "document_id": "DOC-05",
+            "chunk_number": 1,
+            "word_count": 54
+          },
+          "score": 0.7955091734780022,
+          "scores": {
+            "Cosine similarity": 0.6835825750333782,
+            "Dot product": 0.6835825697992142,
+            "Euclidean distance": 0.7955091734780022
           }
         }
       ]
@@ -999,8 +999,8 @@
       "metric": "Euclidean distance",
       "k": 10,
       "actual_chunks": 10,
-      "context_words": 543,
-      "context_characters": 3654,
+      "context_words": 546,
+      "context_characters": 3637,
       "results": [
         {
           "rank": 1,
@@ -1014,11 +1014,11 @@
             "chunk_number": 1,
             "word_count": 61
           },
-          "score": 0.9968228595735505,
+          "score": 0.6104723373453045,
           "scores": {
-            "Cosine similarity": 0.503172106847389,
-            "Dot product": 0.5031721205517639,
-            "Euclidean distance": 0.9968228595735505
+            "Cosine similarity": 0.8136617525671102,
+            "Dot product": 0.8136617084603665,
+            "Euclidean distance": 0.6104723373453045
           }
         },
         {
@@ -1033,11 +1033,11 @@
             "chunk_number": 1,
             "word_count": 58
           },
-          "score": 1.0758410673474346,
+          "score": 0.6123566205119187,
           "scores": {
-            "Cosine similarity": 0.42128302541755075,
-            "Dot product": 0.4212830447180984,
-            "Euclidean distance": 1.0758410673474346
+            "Cosine similarity": 0.8125096772620083,
+            "Dot product": 0.8125096452123597,
+            "Euclidean distance": 0.6123566205119187
           }
         },
         {
@@ -1052,34 +1052,15 @@
             "chunk_number": 1,
             "word_count": 55
           },
-          "score": 1.182151218136269,
+          "score": 0.6858890118389348,
           "scores": {
-            "Cosine similarity": 0.3012592689935651,
-            "Dot product": 0.30125927773034955,
-            "Euclidean distance": 1.182151218136269
+            "Cosine similarity": 0.7647781351806024,
+            "Dot product": 0.7647781464343344,
+            "Euclidean distance": 0.6858890118389348
           }
         },
         {
           "rank": 4,
-          "id": "DOC-05:chunk-1",
-          "text": "Top-K retrieval scores a query against document embeddings and selects the K highest similarities or K lowest distances. K is the number of retrieved chunks, not a similarity threshold. Exact search evaluates every stored vector and is convenient for small datasets. Approximate nearest neighbor indexes trade some recall for speed at much larger scale.",
-          "metadata": {
-            "title": "Top-K search",
-            "topic": "retrieval",
-            "source": "Course demo notes",
-            "document_id": "DOC-05",
-            "chunk_number": 1,
-            "word_count": 54
-          },
-          "score": 1.2222550762451219,
-          "scores": {
-            "Cosine similarity": 0.2530462792355502,
-            "Dot product": 0.2530462842964622,
-            "Euclidean distance": 1.2222550762451219
-          }
-        },
-        {
-          "rank": 5,
           "id": "DOC-13:chunk-1",
           "text": "To evaluate retrieval, use test questions with known relevant chunks. Precision at K measures how many retrieved chunks are relevant divided by K. Recall at K measures retrieved relevant chunks divided by all known relevant chunks. Increasing K may improve recall but reduce precision; neither behavior is guaranteed on every dataset.",
           "metadata": {
@@ -1090,49 +1071,68 @@
             "chunk_number": 1,
             "word_count": 51
           },
-          "score": 1.2896800904246104,
+          "score": 0.75430854859956,
           "scores": {
-            "Cosine similarity": 0.16836264193059663,
-            "Dot product": 0.16836264390433764,
-            "Euclidean distance": 1.2896800904246104
+            "Cosine similarity": 0.7155093144138372,
+            "Dot product": 0.7155093336766889,
+            "Euclidean distance": 0.75430854859956
+          }
+        },
+        {
+          "rank": 5,
+          "id": "DOC-05:chunk-1",
+          "text": "Top-K retrieval scores a query against document embeddings and selects the K highest similarities or K lowest distances. K is the number of retrieved chunks, not a similarity threshold. Exact search evaluates every stored vector and is convenient for small datasets. Approximate nearest neighbor indexes trade some recall for speed at much larger scale.",
+          "metadata": {
+            "title": "Top-K search",
+            "topic": "retrieval",
+            "source": "Course demo notes",
+            "document_id": "DOC-05",
+            "chunk_number": 1,
+            "word_count": 54
+          },
+          "score": 0.7955091734780022,
+          "scores": {
+            "Cosine similarity": 0.6835825750333782,
+            "Dot product": 0.6835825697992142,
+            "Euclidean distance": 0.7955091734780022
           }
         },
         {
           "rank": 6,
-          "id": "DOC-12:chunk-1",
-          "text": "Vector normalization divides a vector by its Euclidean length to create a unit vector. Normalizing removes magnitude differences. Cosine similarity is invariant to positive rescaling, while raw dot product and raw Euclidean distance can change. Compare metrics carefully and explicitly state whether your embeddings have been normalized.",
+          "id": "DOC-09:chunk-1",
+          "text": "Retrieval augmented generation first embeds a question, retrieves relevant chunks, and places their text in the prompt of a language model. The model then generates an answer grounded in that context. Retrieval scores describe vector relationships, not factual reliability. Cite source chunks and acknowledge when the evidence cannot answer the question.",
           "metadata": {
-            "title": "Normalization",
-            "topic": "similarity",
+            "title": "Retrieval augmented generation",
+            "topic": "RAG",
             "source": "Course demo notes",
-            "document_id": "DOC-12",
+            "document_id": "DOC-09",
             "chunk_number": 1,
-            "word_count": 47
+            "word_count": 51
           },
-          "score": 1.3181966177664222,
+          "score": 0.8334113216223358,
           "scores": {
-            "Cosine similarity": 0.13117886937926324,
-            "Dot product": 0.13117887404842296,
-            "Euclidean distance": 1.3181966177664222
+            "Cosine similarity": 0.6527127806817955,
+            "Dot product": 0.6527127735134173,
+            "Euclidean distance": 0.8334113216223358
           }
         },
         {
           "rank": 7,
-          "id": "DOC-01:chunk-1",
-          "text": "An embedding represents text as a dense vector of numbers. An embedding model learns patterns so texts with related meanings tend to occupy nearby positions in vector space. A query and the searchable documents must use the same embedding model and dimension. Embeddings support semantic matching even when a question and its answer use different words.",
+          "id": "DOC-14:chunk-1",
+          "text": "Live language model requests require a valid API key and network connection. Keep API keys in environment variables rather than source code or public GitHub repositories. Only send text you are allowed to share with the provider. A retrieval application can still show search results without making a generation request.",
           "metadata": {
-            "title": "Text embeddings",
-            "topic": "embeddings",
+            "title": "Live LLM integration",
+            "topic": "LLM",
             "source": "Course demo notes",
-            "document_id": "DOC-01",
+            "document_id": "DOC-14",
             "chunk_number": 1,
-            "word_count": 56
+            "word_count": 50
           },
-          "score": 1.3281165449253458,
+          "score": 0.868383534472562,
           "scores": {
-            "Cosine similarity": 0.11805325912665854,
-            "Dot product": 0.11805326415679107,
-            "Euclidean distance": 1.3281165449253458
+            "Cosine similarity": 0.6229550274816161,
+            "Dot product": 0.6229550422740321,
+            "Euclidean distance": 0.868383534472562
           }
         },
         {
@@ -1147,30 +1147,30 @@
             "chunk_number": 1,
             "word_count": 47
           },
-          "score": 1.3336737006858717,
+          "score": 0.878598643416001,
           "scores": {
-            "Cosine similarity": 0.11065721558711705,
-            "Dot product": 0.11065721378763206,
-            "Euclidean distance": 1.3336737006858717
+            "Cosine similarity": 0.6140322029791798,
+            "Dot product": 0.6140321887970316,
+            "Euclidean distance": 0.878598643416001
           }
         },
         {
           "rank": 9,
-          "id": "DOC-09:chunk-1",
-          "text": "Retrieval augmented generation first embeds a question, retrieves relevant chunks, and places their text in the prompt of a language model. The model then generates an answer grounded in that context. Retrieval scores describe vector relationships, not factual reliability. Cite source chunks and acknowledge when the evidence cannot answer the question.",
+          "id": "DOC-01:chunk-1",
+          "text": "An embedding represents text as a dense vector of numbers. An embedding model learns patterns so texts with related meanings tend to occupy nearby positions in vector space. A query and the searchable documents must use the same embedding model and dimension. Embeddings support semantic matching even when a question and its answer use different words.",
           "metadata": {
-            "title": "Retrieval augmented generation",
-            "topic": "RAG",
+            "title": "Text embeddings",
+            "topic": "embeddings",
             "source": "Course demo notes",
-            "document_id": "DOC-09",
+            "document_id": "DOC-01",
             "chunk_number": 1,
-            "word_count": 51
+            "word_count": 56
           },
-          "score": 1.3430198332812389,
+          "score": 0.8971571102554304,
           "scores": {
-            "Cosine similarity": 0.09814885394138274,
-            "Dot product": 0.09814885287862796,
-            "Euclidean distance": 1.3430198332812389
+            "Cosine similarity": 0.5975545423918079,
+            "Dot product": 0.5975545166047557,
+            "Euclidean distance": 0.8971571102554304
           }
         },
         {
@@ -1185,11 +1185,11 @@
             "chunk_number": 1,
             "word_count": 53
           },
-          "score": 1.356752958214458,
+          "score": 0.9082260759152343,
           "scores": {
-            "Cosine similarity": 0.07961072225790905,
-            "Dot product": 0.07961072373438774,
-            "Euclidean distance": 1.356752958214458
+            "Cosine similarity": 0.5875626681807281,
+            "Dot product": 0.587562626392506,
+            "Euclidean distance": 0.9082260759152343
           }
         }
       ]

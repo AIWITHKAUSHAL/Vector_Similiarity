@@ -81,6 +81,18 @@ def retrieve(chunks, vectors, query_vector, k, metric=METRICS[0]):
     return [{"rank": rank, **row} for rank, row in enumerate(rows[:k], 1)]
 
 
+def embed_texts(client, model, texts, batch_size=100):
+    """Embed texts through an OpenAI-compatible client, in batches, preserving order."""
+    vectors = []
+    for start in range(0, len(texts), batch_size):
+        response = client.embeddings.create(
+            model=model, input=list(texts[start : start + batch_size])
+        )
+        ordered = sorted(response.data, key=lambda item: item.index)
+        vectors.extend(item.embedding for item in ordered)
+    return vectors
+
+
 def build_context(results):
     return "\n\n".join(f"[{row['id']}]\n{row['text']}" for row in results)
 

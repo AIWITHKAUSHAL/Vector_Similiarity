@@ -14,29 +14,26 @@ from retrieval import (
     answer_question,
     build_context,
     chunk_documents,
+    embed_texts,
     retrieve,
 )
 
 load_dotenv()
 ROOT = Path(__file__).resolve().parent
-EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
+EMBEDDING_MODEL = os.getenv("EURI_EMBEDDING_MODEL", "gemini-embedding-2-preview")
 BASE_URL = "https://api.euron.one/api/v1/euri"
 
 st.set_page_config(page_title="Vector Search Lab", page_icon="🔎", layout="wide")
 
 
-@st.cache_resource
-def get_encoder():
-    from sentence_transformers import SentenceTransformer
-
-    return SentenceTransformer(
-        EMBEDDING_MODEL, cache_folder=str(ROOT / ".cache" / "models")
-    )
+def embed_with_euri(api_key, texts):
+    with OpenAI(api_key=api_key, base_url=BASE_URL, timeout=60, max_retries=1) as client:
+        return embed_texts(client, EMBEDDING_MODEL, texts)
 
 
 @st.cache_data(show_spinner=False)
-def embed_documents(texts):
-    return get_encoder().encode(list(texts), normalize_embeddings=False).tolist()
+def embed_documents(texts, _api_key):
+    return embed_with_euri(_api_key, texts)
 
 
 st.title("Vector Search Lab")
@@ -57,7 +54,7 @@ with st.sidebar:
         "Chat model", value=os.getenv("EURI_MODEL", "gemini-3.5-flash-lite")
     )
     st.caption(
-        "Your query and selected chunks are sent to EURI only when you click Generate. Keep your key out of recordings."
+        "Chunks and your query are sent to EURI for embedding when you click Retrieve, and to the chat model when you click Generate. Keep your key out of recordings."
     )
     uploaded = st.file_uploader("Optional custom document (.txt, UTF-8)", type=["txt"])
     st.caption(
@@ -108,17 +105,15 @@ if st.session_state.get("search_signature") != search_signature:
 if st.button("Retrieve and compare", type="primary"):
     if not query.strip():
         st.warning("Enter a question first.")
+    elif not api_key:
+        st.warning("Add EURI_API_KEY to .env or enter it in the sidebar to create embeddings.")
     else:
         try:
             with st.spinner(
-                "Creating embeddings and ranking chunks. The first run downloads the embedding model…"
+                f"Creating embeddings with {EMBEDDING_MODEL} and ranking chunks…"
             ):
-                vectors = embed_documents(tuple(c.text for c in chunks))
-                query_vector = (
-                    get_encoder()
-                    .encode(query.strip(), normalize_embeddings=False)
-                    .tolist()
-                )
+                vectors = embed_documents(tuple(c.text for c in chunks), api_key)
+                query_vector = embed_with_euri(api_key, (query.strip(),))[0]
                 rankings = {
                     m: retrieve(chunks, vectors, query_vector, 10, m) for m in METRICS
                 }
@@ -128,9 +123,10 @@ if st.button("Retrieve and compare", type="primary"):
             }
             st.session_state.search_signature = search_signature
             st.session_state.pop("answer", None)
-        except Exception:  # noqa: BLE001 - show a friendly UI error instead of a traceback
+        except Exception as exc:  # noqa: BLE001 - show a friendly UI error instead of a traceback
             st.error(
-                "Embedding creation failed. Install requirements.txt and check internet access for the initial model download. Retrieval cannot run without the embedding model."
+                f"Embedding creation failed. Check your EURI API key, the {EMBEDDING_MODEL} model, quota, and connection. Retrieval cannot run without embeddings."
+                f"\n\nDetails: {type(exc).__name__}: {str(exc)[:300]}"
             )
 
 search = st.session_state.get("search")
@@ -190,9 +186,10 @@ if search:
                         client, model.strip(), query.strip(), results
                     )
                 st.session_state.answer = {"text": answer, "model": model.strip()}
-            except Exception:  # noqa: BLE001 - show a friendly UI error instead of a traceback
+            except Exception as exc:  # noqa: BLE001 - show a friendly UI error instead of a traceback
                 st.error(
                     "EURI could not generate an answer. Check your API key, model availability, account quota, and connection. Your retrieval results are still available."
+                    f"\n\nDetails: {type(exc).__name__}: {str(exc)[:300]}"
                 )
         if not api_key:
             st.info(
@@ -279,7 +276,7 @@ else:
 
 with st.expander("Embedding and corpus details"):
     st.write(
-        f"Embedding model: {EMBEDDING_MODEL}. Query and chunks use the same local model. The chat model is used only for answer generation."
+        f"Embedding model: {EMBEDDING_MODEL}. Query and chunks use the same EURI embedding model. The chat model is used only for answer generation."
     )
     st.write(
         "Chunks contain up to 110 whitespace-separated words with 25-word overlap. Search exhaustively scores every chunk. The sample documents are authored educational notes, not external reference material."

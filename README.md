@@ -1,6 +1,6 @@
 # Vector Search and Similarity Analysis
 
-A Streamlit retrieval lab with local semantic embeddings and live, context-grounded answers through EURI. Includes a 14-document educational corpus, custom text uploads, exact Top-K search, three scoring methods, and side-by-side K experiments.
+A Streamlit retrieval lab with EURI `gemini-embedding-2-preview` semantic embeddings and live, context-grounded answers through EURI. Includes a 14-document educational corpus, custom text uploads, exact Top-K search, three scoring methods, and side-by-side K experiments.
 
 ## Run
 
@@ -26,9 +26,9 @@ Copy-Item .env.example .env
 .\.venv\Scripts\python -m streamlit run app.py
 ```
 
-Open the local URL printed by Streamlit. The first search downloads `sentence-transformers/all-MiniLM-L6-v2` from Hugging Face; this requires internet access and disk space for the model and dependencies. Later searches reuse the cached model. Embeddings run locally; no embedding API key is required.
+Open the local URL printed by Streamlit. Embeddings are created by EURI's `gemini-embedding-2-preview` model (set `EURI_EMBEDDING_MODEL` to use another EURI embedding model), so retrieval requires your EURI API key and network access. Chunk embeddings are cached for the session; each search embeds the query.
 
-The `.env` file is ignored by Git. Alternatively, enter your key in the app's password field. Without an API key, retrieval and comparison still work. Generation requires a working EURI key, account access to the selected model, and network access. Requests may incur provider charges.
+The `.env` file is ignored by Git. Alternatively, enter your key in the app's password field. Both retrieval and generation need an API key. Generation also requires a working EURI key, account access to the selected model, and network access. Requests may incur provider charges.
 
 EURI integration uses the supplied OpenAI-compatible configuration:
 
@@ -39,7 +39,7 @@ client = OpenAI(
 )
 ```
 
-The default chat model is `gemini-3.5-flash-lite`. Set `EURI_MODEL` or edit the model field if your account uses another model. This chat model generates answers; the separate local embedding model produces the vectors.
+The default chat model is `gemini-3.5-flash-lite`. Set `EURI_MODEL` or edit the model field if your account uses another model. This chat model generates answers; the separate EURI embedding model produces the vectors.
 
 ## Demonstrate the assignment
 
@@ -63,9 +63,9 @@ The default chat model is `gemini-3.5-flash-lite`. Set `EURI_MODEL` or edit the 
 
 ### Retrieval pipeline
 
-`documents → chunks + metadata → local embeddings → query embedding → exact scores → sorted Top-K → EURI prompt → cited answer`
+`documents → chunks + metadata → EURI embeddings → query embedding → exact scores → sorted Top-K → EURI prompt → cited answer`
 
-Both documents and queries use the same 384-dimensional MiniLM model. Search scores every chunk and uses stable chunk IDs to break ties. It ranks similarity in descending order and distance in ascending order. The app does not apply additional vector normalization (`normalize_embeddings=False`); model-internal normalization may still make rankings coincide.
+Both documents and queries use the same 3072-dimensional `gemini-embedding-2-preview` model. Search scores every chunk and uses stable chunk IDs to break ties. It ranks similarity in descending order and distance in ascending order. The app does not apply additional vector normalization; the provider may already return normalized vectors, so rankings may still coincide.
 
 ### Interactive architecture visualizer
 
@@ -142,22 +142,22 @@ To save a reproducible experiment report with every result field:
 .\.venv\Scripts\python run_experiments.py --output experiment_results.json
 ```
 
-The included `experiment_results.json` was generated with real MiniLM embeddings for the default question. All three metrics ranked `DOC-08:chunk-1` first in this run. The retrieved context sizes were:
+The included `experiment_results.json` was generated with real `gemini-embedding-001` embeddings for the default question. All three metrics ranked `DOC-08:chunk-1` first in this run. The retrieved context sizes were:
 
 | K | Retrieved chunks | Context words (including chunk ID labels) |
 | --- | --- | --- |
 | 1 | 1 | 62 |
 | 3 | 3 | 177 |
 | 5 | 5 | 284 |
-| 10 | 10 | 543 |
+| 10 | 10 | 546 |
 
 These are observed retrieval results, not a live LLM evaluation. Regenerate the report to experiment with another query.
 
-Core tests use only the Python standard library. They do not call a paid API or download an embedding model. To validate a real completion, run the app with your EURI key and click Generate; a mock test does not establish provider availability.
+Core tests use only the Python standard library. They do not call a paid API. To validate a real completion, run the app with your EURI key and click Generate; a mock test does not establish provider availability.
 
 ## GitHub and YouTube submission
 
-Create a GitHub repository and push the complete project (exclude `.env`, `.venv`, and model caches):
+Create a GitHub repository and push the complete project (exclude `.env`, `.venv`, and `.cache`):
 
 ```powershell
 git init
